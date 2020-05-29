@@ -501,26 +501,26 @@ say_hi(gets.chomp)*/
 
 // USE THIS INSTEAD OF CONSTRUCTOR CLASSES
 
-class Book {
-  constructor(title, author, genre) {
-    this.title = title;
-    this.author = author;
-    this.genre = genre;
-  }
+// class Book {
+//   constructor(title, author, genre) {
+//     this.title = title;
+//     this.author = author;
+//     this.genre = genre;
+//   }
 
-  prettyPrint() {
-    return `${this.title} written by ${this.author}, genre: ${this.genre}`;
-  }
-}
+//   prettyPrint() {
+//     return `${this.title} written by ${this.author}, genre: ${this.genre}`;
+//   }
+// }
 
-class FictionBook extends Book {
-  constructor(title, author) {
-    super(title, author, "Fiction");
-  }
-} // INHERITANCE - inheriting the book class
+// class FictionBook extends Book {
+//   constructor(title, author) {
+//     super(title, author, "Fiction");
+//   }
+// } // INHERITANCE - inheriting the book class
 
-const myBook = new Book("Harry Potter", "JK Rowling", "adventure");
-console.log(myBook.prettyPrint());
+// const myBook = new Book("Harry Potter", "JK Rowling", "adventure");
+// console.log(myBook.prettyPrint());
 
-const myFictionBook = new FictionBook("LOTR", "JRR Tolkien");
-console.log(myFictionBook.prettyPrint());
+// const myFictionBook = new FictionBook("LOTR", "JRR Tolkien");
+// console.log(myFictionBook.prettyPrint());

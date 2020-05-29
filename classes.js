@@ -58,44 +58,44 @@
 
 /////////////////////////////////////////////////////////////////////
 
-class Walk {
-  constructor(location, distance) {
-    this.location = location;
-    this.distance = distance;
-    this.time = new Date();
-  }
-}
+// class Walk {
+//   constructor(location, distance) {
+//     this.location = location;
+//     this.distance = distance;
+//     this.time = new Date();
+//   }
+// }
 
-class Dog {
-  constructor(name, location) {
-    this.name = name;
-    this.location = location;
-    this.walkHistory = [];
-    this.walked = 0;
-  }
+// class Dog {
+//   constructor(name, location) {
+//     this.name = name;
+//     this.location = location;
+//     this.walkHistory = [];
+//     this.walked = 0;
+//   }
 
-  speak() {
-    return `Woof! my name is ${this.name}`; // remember you gotta reference this
-  }
+//   speak() {
+//     return `Woof! my name is ${this.name}`; // remember you gotta reference this
+//   }
 
-  walk(location, distance) {
-    this.walkHistory.push(new Walk(location, distance));
-  }
-  // return `Going for a ${distance} walk at ${location}`;
+//   walk(location, distance) {
+//     this.walkHistory.push(new Walk(location, distance));
+//   }
+//   // return `Going for a ${distance} walk at ${location}`;
 
-  displayWalks() {
-    console.log(this.walkHistory);
-  }
+//   displayWalks() {
+//     console.log(this.walkHistory);
+//   }
 
-  totalDistance() {
-    return this.walked;
-  }
-}
+//   totalDistance() {
+//     return this.walked;
+//   }
+// }
 
-const pomeranian = new Dog("Peanut", "Erko");
-pomeranian.walk("erko", 20);
-pomeranian.walk("marra", 30);
-pomeranian.displayWalks();
+// const pomeranian = new Dog("Peanut", "Erko");
+// pomeranian.walk("erko", 20);
+// pomeranian.walk("marra", 30);
+// pomeranian.displayWalks();
 // console.log(pomeranian.totalDistance());
 
 // ////////////////////////////////////////////////////////////////////

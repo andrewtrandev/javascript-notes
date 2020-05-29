@@ -524,3 +524,234 @@ say_hi(gets.chomp)*/
 
 // const myFictionBook = new FictionBook("LOTR", "JRR Tolkien");
 // console.log(myFictionBook.prettyPrint());
+
+///////////////////////////////////////////////////////////////////////////////////////////
+//                     ERROR HANDLING    - 29.5.20
+
+// throw "test my error message";
+// if we check our console we can see this
+
+// throw {
+//   message: "asdf"
+//   status : 400
+//   code : 122
+// }; // generally errors will be objects and they may have statuses or codes
+
+// Any time an error gets thrown, it'll stop executing code
+// In a browser, javascript error won't crash the website
+// In node.js, an error will crash the whole program
+
+// function CustomError(message) {
+//   this.message = message;
+//   this.code = "my-custom-error";
+//   throw "(╯°□°）╯︵ ┻━┻";
+// }
+
+// throw new CustomError("test");
+
+/////////////////////////////////////
+//        TRY CATCH
+
+//    allows you to run error-prone code without the code crashing
+
+// try {
+//   //code that may throw an error
+//   // code placed in here won't break the program
+//   throw "(╯°□°）╯︵ ┻━┻"; // once it hits the error it won't run any code after it
+// } catch (error) {
+//   // (error) is the error
+
+//   console.log(`This is the error: ${error}`); // this is the catch
+// } finally {
+//   // this code is always executed whether an error is thrown or not
+//   console.log("Always executed");
+// }
+
+// try {
+
+// } catch (error) {
+
+// } finally {
+
+// }
+
+///////////////////////////////////
+//      EXAMPLE
+
+//    reminder to make errors as descriptive as possible
+
+// class SubtractionError {
+//   constructor(message) {
+//     this.message = message;
+//     this.code = "subtration-invalid-input";
+//   }
+// }
+
+// function subtractTwoThings(num1, num2) {
+//   let answer;
+//   answer = num1 - num2;
+//   if (isNaN(answer)) {
+//     throw new SubtractionError(`you can't subtract ${num1} and ${num2}`);
+//   }
+//   return answer;
+// }
+
+// // console.log(subtractTwoThings(2, "sasd"));
+
+// const num1 = prompt("enter a number");
+// const num2 = prompt("enter another number");
+
+// try {
+//   subtractTwoThings(num1, num2);
+// } catch (error) {
+//   alert(error.message);
+// }
+
+/////////////////////////////////////////////////////
+//        JAVASCRIPT ERRORS
+
+//javascript has it's own error class; Error
+
+//typically you want to inherit from the Error class to make your own custom errors
+
+// class MyCustomError extends Error {
+//   constructor(...params) {
+//     super(...params);
+//     this.severity = 5;
+//   }
+// }
+
+// // //don't have to extend but recommended
+
+// try {
+//   throw new MyCustomError("something went wrong");
+// } catch (error) {
+//   console.log(error.severity);
+// }
+
+////////////////////////////////////////////////////////
+//             CLOSURES / FUNCTIONS / FUNCTION SCOPE
+
+// if (true) {
+//   var myVar = 2;
+//   let myLet = 3;
+// }
+
+// console.log(myVar); //myVar is in scope of console.log
+// console.log(myLet); //myLet is however, out of scope
+
+////////////////////////////////////
+//        EXAMPLE OF FUNCTION SCOPE
+
+//Can't access variables that are inside functions
+
+// let owner = "Mike";
+
+// function myDog() {
+//   var dog = "Fido";
+//   console.log(dog);
+//   console.log(owner); // functions can access variables outside of it, can be problematic, since this function may change variables outside of it
+// }
+
+// myDog(); // this line will actually output the owner also because functions can access variables outside of them
+// console.log(dog); // this will error with undefined, why because it can't access the value of dog, functions don't let you access variables inside them
+// console.log(owner);
+
+////////////////////////////////////
+// /     EXAMPLE OF A SIDE-EFFECT
+
+// let owner = "Mike";
+
+// function myDog() {
+//   owner = "Joe";
+// }
+
+// console.log(owner); // PRINTS MIKE
+// myDog();
+// console.log(owner); // PRINTS JOE, after running myDog();
+
+/////////////////////////////////////////////////////////////////////
+//                NESTED FUNCTIONS / HIGHER-ORDER FUNCTIONS
+
+// function parentFunction(a) {
+//   let b = 1;
+//   function childFunction() {
+//     // this child function has access to the parent function's variables and the parameters from the parent function also get passed to the childFunction automatically.
+//     console.log("hello");
+//     return a + b;
+//   }
+//   return childFunction(); //this returns a function at the end of code execution, and executes the function
+// }
+
+// console.log(parentFunction(2));
+
+///////////////////////////////////////
+///       CLOSURE EXAMPLE
+
+// A way to turn global variables into local variables
+
+// function generateChildFunction(user) {
+//   user.email = user.email.toUpperCase();
+
+//   function childFunction() {
+//     // so we can feed variables and create variables, that the child function will have access to.
+//     //Wilkens says that a child function creates a  storage place for all the variables from gnerateChildFunction
+//     console.log(user);
+//   }
+
+//   return childFunction;
+// }
+
+// const myChildFunction = generateChildFunction({ email: "Mike@gmail.com" });
+
+// myChildFunction();
+
+///////////////////////////////////////////////
+//      CLOSURE EXAMPLE 2
+
+// function generateChildFunction(name) {
+//   function childFunction(age) {
+//     console.log(name, age);
+//   }
+
+//   return childFunction;
+// }
+
+// const mikeFunction = generateChildFunction("Mike"); // so this creates a function with the name of "Mike" using the top most function, it then returns a childFunction so now mikeFunction is now a function with the properites of childFunction.
+// const joeFunction = generateChildFunction("Joe");
+
+// mikeFunction(20); //since mikeFunction now has the properties of childFunction we can feed in an age and it'll console.log out the name and age. Weird how it still has access to the name though, is that because that property has been set or it's still pulling it from generateChildFunction?
+// function childFunction(age) {
+//   console.log(name, age);
+// }
+// joeFunction(15);
+
+////////////////////////////////////////////////////
+
+//      DATA SERIALIZATION / SERIALISATION / JSON
+
+// const user = {
+//   name: "Mike",
+//   profession: "Coder",
+//   isWorking: true,
+//   age: 26,
+//   hobbies: ["asdf", "asdf"],
+// };
+
+// //converting an object into a string
+// // note you need quotation marks around the variables
+// const userJSON = `{
+//   "name": "Mike",
+//   "profession":"Coder",
+//   "isWorking":true,
+//   "age":26,
+//   "hobbies":["asdf","asdf"]
+// }`;
+
+// console.log(JSON.stringify(user));
+
+// console.log(JSON.parse(userJSON)); // converting a string back into an object
+
+// /////////////////////////////////////
+
+//      XML

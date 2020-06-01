@@ -1,3 +1,5 @@
+// https://edabit.com/challenges
+
 /*
 Create a function that counts the number of syllables a word has.Each syllable is separated with a dash -.
 
@@ -95,12 +97,23 @@ Notes
 Expect any positive number between 1 and 1000.
 */
 
-///////////////////////
+///////////////////////////////
 
-function addUp(num) {}
+//      SOLUIION
 
-///////////////////////////////////////////////////////////////////////////////////////
+// function addUp(num) {
+//   let count = 0;
+//   for (i = 0; i < num + 1; i++) {
+//     count += i;
+//   }
+//   return count;
+// }
+
+// console.log(addUp(4));
+/////////////////////////////////////////////////////////////////////////////////////////
+
 /*
+
 Create a function that takes an array and returns an array of the accumulating product.
 
 Examples
@@ -115,6 +128,7 @@ accumulatingProduct([]) ➞ []
 */
 
 ////////////////////////////
+// SOLUTION
 
 // function accumulatingProduct(arr) {
 //   let answer = [];

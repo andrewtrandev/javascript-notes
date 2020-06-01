@@ -183,3 +183,36 @@ accumulatingProduct([]) ➞ []
 // const map1 = array1.map((x) => 1 * 2); // this returns [2, 2, 2, 2]
 // console.log(map1);
 // expected output: Array [2, 8, 18, 32]
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// The Fizz Buzz Test
+// Write a method that returns array of all the numbers from 1 to an integer argument. But for multiples of three use “Fizz” instead of the number and for the multiples of five use “Buzz”. For numbers which are multiples of both three and five use “FizzBuzz”
+
+// Example
+// fizzBuzz(10) ➞ [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz']
+
+// fizzBuzz(15) ➞ [1, 2, 'Fizz', 4, 'Buzz', 'Fizz', 7, 8, 'Fizz', 'Buzz', 11, 'Fizz', 13, 14, 'FizzBuzz']
+// Notes
+// Make sure to return array.
+
+//////////////////////////////////////
+
+//          SOLUTION
+
+// function fizzBuzz(number) {
+//   returnCount = [];
+//   for (i = 1; i < number + 1; i++) {
+//     if (i % 3 === 0 && i % 5 === 0) {
+//       returnCount.push("FizzBuzz");
+//     } else if (i % 3 === 0) {
+//       returnCount.push("Fizz");
+//     } else if (i % 5 === 0) {
+//       returnCount.push("Buzz");
+//     } else {
+//       returnCount.push(i);
+//     }
+//   }
+//   return returnCount;
+// }
+// console.log(fizzBuzz(15));

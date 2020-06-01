@@ -758,8 +758,8 @@ say_hi(gets.chomp)*/
 
 ///////////////////////////////////////
 
-/////////////////////////////////////
-//              SHORT CIRCUITING
+//////////////////////////////////////
+//              SHORT CIRCUITING       1.6.20
 
 // console.log("val1" && "val2"); // returns val2
 // console.log("" && "val2"); //returns empty string

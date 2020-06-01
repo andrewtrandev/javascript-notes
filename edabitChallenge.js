@@ -110,6 +110,7 @@ Expect any positive number between 1 and 1000.
 // }
 
 // console.log(addUp(4));
+
 /////////////////////////////////////////////////////////////////////////////////////////
 
 /*
@@ -127,18 +128,58 @@ accumulatingProduct([1, 0, 1, 0]) ➞ [1, 0, 0, 0]
 accumulatingProduct([]) ➞ []
 */
 
-////////////////////////////
-// SOLUTION
+//////////////////////////////////////////////////
+//          SOLUTION  - 5/5 that felt really hard
 
 // function accumulatingProduct(arr) {
-//   let answer = [];
-//   answer.push(arr[0]);
-//   for (i = 1; i < arr.length; i++) {
-//     answer.push(arr[i] * arr[i - 1]);
+//   console.log(arr.length);
+//   let arrayReturn = [];
+//   let multiple = arr[0];
+
+//   for (i = 1; i < arr.length + 1; i++) {
+//     arrayReturn.push(multiple);
+//     multiple *= arr[i];
 //   }
-//   return answer;
+//   return arrayReturn;
 // }
 
 // console.log(accumulatingProduct([1, 2, 3, 4]));
 
-//1, 2x1, 3x2, 4x3x2, // x * x-1
+// make a for loop and go through each number
+// if the number is array[0] do nothing
+// if the number is array[1] multiply it by array[0]
+//if the number is arr[2] mutiply it by arr[1] and arr[0]
+
+//////////////////////////////////////////////////////
+
+//          ALTERNATE SOLUTION // don't really understand how to use map
+
+// const accumulatingProduct = (arr) => {
+//   let product = 1;        // this variable is one so that we can get the first value of arr[0]
+//   return arr.map((num) => (product *= num));     // map works by returning the callback on each of the values into a new array.
+// };                                               // on the first run it will do product = product * num[0] , product = 1
+//                                                  // on second run product = product * num[1], product = 2
+//                                                  // third run, product = 6
+//                                                  // fourth run, product = 24
+
+// console.log(accumulatingProduct([1, 2, 3, 4]));
+
+//////////////////////////////////////////////////
+
+//              MAP PRACTICE
+
+// const array2 = [1, 2, 3, 4];
+// let map3 = 1;
+// const map2 = array2.map((x) => (map3 = map3 * 10)); // for x, call the following function for each of x, you don't even have to use x in the callback and it will still return an array, but I think in 99% cases you would have the element in the callback because you want to apply the function to it.
+
+// console.log(map2);
+
+//////////////////////////
+
+// const array1 = [1, 4, 9, 16];
+
+// pass a function to map
+// const map1 = array1.map((x) => x * 2); // this will return [2, 8, 18, 32]
+// const map1 = array1.map((x) => 1 * 2); // this returns [2, 2, 2, 2]
+// console.log(map1);
+// expected output: Array [2, 8, 18, 32]

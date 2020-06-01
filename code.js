@@ -770,3 +770,121 @@ say_hi(gets.chomp)*/
 
 // falsey = false, 0, '' "" , null, undefined, NaN
 // truthy = '0', 'false', [], {}, function(){}
+
+///////////////////////////////////////////////////////////
+//            CALLBACKS  / CALLBACK FUNCTIONS
+
+// EXAMPLE
+
+// function adder(num1, num2, onComplete) {
+//   // passing in numbers and a function
+//   const answer = num1 + num2;
+
+//   onComplete(answer); //calling the function at the end
+// }
+
+// function callOnAdderComplete(answer) {
+//   //this gets called when the adder is complete
+//   console.log("Done with adder", answer);
+// }
+
+// adder(2, 5, callOnAdderComplete);
+
+///////////////////////////////////////////////////////////
+
+//               SYNCHRONOUS / ASYNCHRONOUS
+
+// synchronous code executes one line after the other
+
+//  blocking code
+
+// console.log("2");
+// console.log("1"); // this line can't execute until the line above it executes
+// console.log("3");
+
+// Asynchronous code can be run in parallel or do things at the same time.
+
+/////////////////////////////
+// EXAMPLE of synchronous code, Mike coding a sleep method
+
+// function wait(milliseconds) {
+//   let start = Date.now();
+//   let now = start;
+//   while (now - start < milliseconds) {
+//     now = Date.now();
+//   }
+// }
+
+// console.log(1);
+// wait(1000);
+// console.log(2);
+
+///////////////////////////////////////////////////////////
+
+//     EXAMPLE OF ASYNCHRONOUS WAIT
+
+// function wait(milliseconds) {
+//   let start = Date.now();
+//   let now = start;
+//   while (now - start < milliseconds) {
+//     now = Date.now();
+//   }
+// }
+
+// console.log(1);
+// // wait(5000)
+// setTimeout(() => {
+//   console.log(3);
+// }, 1000);
+// console.log(2);
+
+// when you do something asynchronous it'll do it separately on a web api and then places it back on the callback queue when it is done, to be put back in the call stack, if nothing is happening
+
+// you need a callback or a promise when you have async code
+
+// console.log(1);
+// setTimeout(() => {
+//   console.log(3);
+// }, 0);
+// console.log(2);
+// console.log(4);
+// above will print out 1,2,3. async code will be pushed to the webapi and called back after all callstack queue is done
+
+////////////////////////////////////////
+
+//     BASIC CALLBACK
+
+// code below doesn't work, cause dunno how to get jquery to work
+
+// function getChuckNorrisJoke(cb) {
+//   $.get("https://api.chucknorris.io/jokes/random", (data) => cb(data.value));
+// }
+
+// console.log(1);
+// getChuckNorrisJoke((joke) => console.log(joke));
+// console.log(2);
+
+///////////////////////////////////////
+
+//      EXAMPLE OF CALLBACK HELL
+
+// function getChuckNorrisJoke(cb) {
+//   $.get("https://api.chucknorris.io/jokes/random", (data) => cb(data.value));
+// }
+
+// function get5ChuckNorrisJokes() {
+//   getChuckNorrisJoke((joke1) => {
+//     getChuckNorrisJoke((joke2) => {
+//       getChuckNorrisJoke((joke3) => {
+//         getChuckNorrisJoke((joke4) => {
+//           getChuckNorrisJoke((joke5) => {
+//             let array = [joke1, joke2, joke3, joke4, joke5];
+//             console.log(array);
+//           });
+//         });
+//       });
+//     });
+//   });
+// }
+
+// get5ChuckNorrisJokes();

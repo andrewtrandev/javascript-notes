@@ -57,26 +57,48 @@ whichIsLarger(() => 505050, () => 5050) ➞ "f"
 Notes
 This exercise is designed as an introduction to higher order functions (functions which use other functions to do their work).
 */
-///////////////////////////////////////////////////////////////////////////////////////
-function whichIsLarger(f, g) {
-  let callf = f();
-  let callg = g();
+/////////////////////////////
 
-  if (callf > callg) {
-    return "f";
-  } else if (callf < callg) {
-    return "g";
-  } else {
-    return "neither";
-  }
-}
+// function whichIsLarger(f, g) {
+//   let callf = f();
+//   let callg = g();
 
-console.log(
-  whichIsLarger(
-    () => 5,
-    () => 10
-  )
-);
+//   if (callf > callg) {
+//     return "f";
+//   } else if (callf < callg) {
+//     return "g";
+//   } else {
+//     return "neither";
+//   }
+// }
+
+// console.log(
+//   whichIsLarger(
+//     () => 5,
+//     () => 10
+//   )
+// );
+
+////////////////////////////////////////////////////////////////////////////
+
+/*
+Add up the Numbers from a Single Number
+Create a function that takes a number as an argument. Add up all the numbers from 1 to the number you passed to the function. For example, if the input is 4 then your function should return 10 because 1 + 2 + 3 + 4 = 10.
+
+Examples
+addUp(4) ➞ 10
+
+addUp(13) ➞ 91
+
+addUp(600) ➞ 180300
+Notes
+Expect any positive number between 1 and 1000.
+*/
+
+///////////////////////
+
+function addUp(num) {}
+
 ///////////////////////////////////////////////////////////////////////////////////////
 /*
 Create a function that takes an array and returns an array of the accumulating product.
@@ -92,7 +114,7 @@ accumulatingProduct([1, 0, 1, 0]) ➞ [1, 0, 0, 0]
 accumulatingProduct([]) ➞ []
 */
 
-///////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////
 
 // function accumulatingProduct(arr) {
 //   let answer = [];

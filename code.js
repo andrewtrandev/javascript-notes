@@ -755,3 +755,18 @@ say_hi(gets.chomp)*/
 // /////////////////////////////////////
 
 //      XML
+
+///////////////////////////////////////
+
+/////////////////////////////////////
+//              SHORT CIRCUITING
+
+// console.log("val1" && "val2"); // returns val2
+// console.log("" && "val2"); //returns empty string
+// console.log(false || ""); // returns empty string, ohhh because if the first value is false it still has to check if the second value is true and if that is also false then it will return that most recent false value.
+
+// OR has to check all values but AND should just circuit on the first falsy statement
+//      https://www.sitepoint.com/javascript-truthy-falsy/
+
+// falsey = false, 0, '' "" , null, undefined, NaN
+// truthy = '0', 'false', [], {}, function(){}

@@ -944,7 +944,7 @@ XHR is the web api for sending and receiving data, this is used to make our code
 
 ///////////////////////////////////
 
-// We can do something such as below ot be able to access the rails app and make a http get request to it, to get the students as json
+// We can do something such as below to be able to access the rails app and make a http get request to it, to get the students as json
 // below code, I've chucked into a html document and opened using chrome, we can then view the info in console
 
 /*
@@ -980,6 +980,8 @@ XHR is the web api for sending and receiving data, this is used to make our code
 */
 
 ///////////////////////////////////////////////////////
+
+// This code block below is the same as above but I've also added a post button, so that we can post data to the rails app. I've applied ids to the buttons and used getElementById to target them, note that you need to change the function name and function that gets called in .addEventListener()
 
 /*
 

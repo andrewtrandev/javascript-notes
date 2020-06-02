@@ -888,3 +888,35 @@ say_hi(gets.chomp)*/
 // }
 
 // get5ChuckNorrisJokes();
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+//                AJAX         2.6.20
+
+// AJAX = Asynchronous JavaScript and XML
+// XHR = XMLHttpRequest
+// AJAX are useful as they can send any request and you don't need to refresh the page
+
+function makeGetRequest(url, callback) {
+  const request = new XMLHttpRequest();
+  request.open("GET", url, true); //staging of the request
+
+  request.onload = (res) => {
+    //this grabs the raw response
+    //setting up a progress event, provides various information such as status,
+    // console.log(res);
+    console.log(res.target.responseText);
+    callback(res.target.responseText);
+  };
+
+  //   request.onerror = () => {
+  //     console.log("Connection Error");
+  //   };
+
+  request.send(); //this sends the http request
+}
+
+makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto", (rawData) => {
+  const pokemonData = JSON.parse(rawData);
+  console.log(pokemonData);
+});

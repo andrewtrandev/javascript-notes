@@ -137,7 +137,7 @@ The Haystack will always contain a needle, so you don't need to consider that ed
 // function findNeedle(haystack) {
 //   for (i = 0; i < haystack.length; i++) {         //outer loop will loop through the arrays
 //     for (j = 0; j < haystack.length; j++) {          // inner loop will loop through the elements within the array
-//       if (haystack[i][j] == "N")                     // if array [0] element [0] is N, else increment j++ and look check again, note inner loops will complete before outer loops, so this should check all the j elements of the array i
+//       if (haystack[i][j] == "N")                     // if array [0] element [0] is N, else increment j++ and look check again, note inner loops will complete before outer loops, so this should check all the j elements of the array iz
 //         // return `${haystack[i][j]} found at [${i}, ${j}]`;
 //         return [i, j];                                    // return location of N as an array
 //     }

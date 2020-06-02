@@ -920,3 +920,23 @@ makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto", (rawData) => {
   const pokemonData = JSON.parse(rawData);
   console.log(pokemonData);
 });
+
+///////////////////////////////////////////////////////////////////////////////
+
+// https://edstem.org/courses/4124/lessons/2960/slides/21851
+
+// mini - exercise for AJAX and RAILS, can't get it working though
+
+////////////////////////////////////////////////////////////////////////////////////////
+
+//               CORS
+
+// CORS = CROSS-ORIGIN RESOURCES SHARING
+
+// A security relaxation mesasure to prevent the same-origin policy from not letting you make AJAX requests from servers other than the site you're visiting
+
+///////////////////////////////////////////////////////
+
+//          JQUERY
+
+// javascript library

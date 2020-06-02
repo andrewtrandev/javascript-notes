@@ -893,39 +893,155 @@ say_hi(gets.chomp)*/
 
 //                AJAX         2.6.20
 
-// AJAX = Asynchronous JavaScript and XML
-// XHR = XMLHttpRequest
-// AJAX are useful as they can send any request and you don't need to refresh the page
+/*
+AJAX = Asynchronous JavaScript and XML
+XHR = XMLHttpRequest
+AJAX are useful as they can send any request and you don't need to refresh the page
 
-function makeGetRequest(url, callback) {
-  const request = new XMLHttpRequest();
-  request.open("GET", url, true); //staging of the request
+Javascript has 1 thread, 1 call stack, and can only process 1 thing at a time
+i.e Single threaded programming language 
+XHR is the web api for sending and receiving data, this is used to make our code async
+*/
 
-  request.onload = (res) => {
-    //this grabs the raw response
-    //setting up a progress event, provides various information such as status,
-    // console.log(res);
-    console.log(res.target.responseText);
-    callback(res.target.responseText);
-  };
+// This code below, I think is used to make a XMLHttpRequest
 
-  //   request.onerror = () => {
-  //     console.log("Connection Error");
-  //   };
+////////////////////////////////
 
-  request.send(); //this sends the http request
-}
+// function makeGetRequest(url, callback) {
+//   const request = new XMLHttpRequest();
+//   request.open("GET", url, true); //staging of the request
 
-makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto", (rawData) => {
-  const pokemonData = JSON.parse(rawData);
-  console.log(pokemonData);
-});
+//   request.onload = (res) => {
+//     //this grabs the raw response
+//     //setting up a progress event, provides various information such as status,
+//     // console.log(res);
+//     console.log(res.target.responseText);
+//     callback(res.target.responseText);
+//   };
+
+//   //   request.onerror = () => {        // this is used for errors
+//   //     console.log("Connection Error");
+//   //   };
+
+//   request.send(); //this sends the http request
+// }
+
+// makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto", (rawData) => {
+//   const pokemonData = JSON.parse(rawData);
+//   console.log(pokemonData);
+// });
 
 ///////////////////////////////////////////////////////////////////////////////
 
 // https://edstem.org/courses/4124/lessons/2960/slides/21851
 
-// mini - exercise for AJAX and RAILS, can't get it working though
+// mini exercise for AJAX and RAILS, can't get it working though
+// turns out for whatever reason, vscode liveshare wasn't playing nice with the student_api.html, so we just manually opened it in chrome and it worked
+
+// the interesting thing about rails is it also provides us routes to get to json, if we generate a resource by using scaffold
+
+// super cool, so you can use javsacript to interact with RAILS and send GET/POST requests to rails, so the javascript can even interact with the rails database
+
+///////////////////////////////////
+
+// We can do something such as below ot be able to access the rails app and make a http get request to it, to get the students as json
+// below code, I've chucked into a html document and opened using chrome, we can then view the info in console
+
+/*
+<!DOCTYPE html>
+<html>
+  <head>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
+  <body>
+    <button>Get User Data</button>
+
+    <script>
+      document.querySelector("button").addEventListener("click", getUserData);
+
+      function getUserData() {
+        console.log("starting request");
+
+        $.ajax({
+          url: "http://localhost:3000/students.json",
+          type: "GET",
+          success: data => {
+            console.log(data);
+          },
+          error: error => {
+            console.log("Error");
+            console.log(error);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+*/
+
+///////////////////////////////////////////////////////
+
+/*
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="jquery.min.js" type="text/javascript"></script>  note this code is broken, from the notes-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+  </head>
+
+  <body>
+    <button id="get">
+      Get User Data
+    </button>
+    <button id="post">
+      Post User Data
+    </button>
+    <script>
+      document.getElementById("get").addEventListener("click", getUserData);
+
+      function getUserData() {
+        console.log("starting request");
+
+        $.ajax({
+          url: "http://localhost:3000/students.json",
+          type: "GET",
+          success: (data) => {
+            console.log(data);
+          },
+          error: (error) => {
+            console.log("Error");
+            console.log(error);
+          },
+        });
+      }
+
+      document.getElementById("post").addEventListener("click", postUserData);
+
+      function postUserData() {
+        console.log("starting request");
+
+        $.ajax({
+          url: "http://localhost:3000/students.json",
+          // type: "GET",
+          type: "POST",
+          data: { student: { name: "John", location: "Brisbane" } },
+          success: (data) => {
+            console.log(data);
+          },
+          error: (error) => {
+            console.log("Error");
+            console.log(error);
+          },
+        });
+      }
+    </script>
+  </body>
+</html>
+*/
 
 ////////////////////////////////////////////////////////////////////////////////////////
 
@@ -933,7 +1049,13 @@ makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto", (rawData) => {
 
 // CORS = CROSS-ORIGIN RESOURCES SHARING
 
-// A security relaxation mesasure to prevent the same-origin policy from not letting you make AJAX requests from servers other than the site you're visiting
+// A security relaxation measure to prevent the same-origin policy from not letting you make AJAX requests from servers other than the site you're visiting
+
+// to disble CORS in a rails application we can chuck the following code into config/application.ruby , note it should go into the under the class
+
+// config.action_dispatch.default_headers = {
+//   'Access-Control-Allow-Origin' => '*'
+// }
 
 ///////////////////////////////////////////////////////
 

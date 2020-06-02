@@ -49,24 +49,91 @@ Add in some error handling, so if the user passes in a pokemonName  that doesn't
 
 //////////////////////////////////////////////////////////////////////
 
-function getPokemonStats(pokemonName, callback) {
-  makeGetRequest(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, (data) => {
-    const pokemonData = JSON.parse(data);
-    const statsArray = [];
-    for (pokemonStat of pokemonData.stats) {
-      statsArray.push({
-        //push the stats as an object into the statsArray
-        name: pokemonStat.stat.name,
-        baseStat: pokemonStat.base_stat,
-      });
-      //   console.log(statsArray);
+// function getPokemonStats(pokemonName, callback) {
+//   makeGetRequest(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`, (data) => {
+//     const pokemonData = JSON.parse(data);
+//     const statsArray = [];
+//     for (pokemonStat of pokemonData.stats) {
+//       statsArray.push({
+//         //push the stats as an object into the statsArray
+//         name: pokemonStat.stat.name,
+//         baseStat: pokemonStat.base_stat,
+//       });
+//       //   console.log(statsArray);
+//     }
+//     // once we've done parsing through the data we can make a callback to send it back to the user, we can think of the above code as a blackbox and then the line just below will send the data back to the user
+//     callback(statsArray);
+//   });
+// }
+
+// getPokemonStats("ditto", (statsArray) => {
+//   // not sure why the callback is defined like this
+//   console.log(statsArray);
+// });
+
+//////////////////////////////////////////////////////////////
+
+/*
+Beast+
+Write a function called whichPokemonIsHeavier(pokemonName1, pokemonName2, callback) which will take two pokemon names and call the callback with which one is heavier. The function should pass into the callback the name of the pokemon that is heavier and also by how much (ex. Bulbasaur is 3kgs heavier than Squirtle). If they both weigh the same, indicate that. 
+*/
+
+///////////////////////////////////////////////////////////////
+
+//      try to rewrite Mike's code that's below this code block
+
+// function whichPokemonIsHeavier(pokemonName1, pokemonName2, callback) {
+//   makeGetRequest(
+//     `https://pokeapi.co/api/v2/pokemon/${pokemonName1}`,
+//     (rawPokemonData) => {
+//       const pokemonData1 = JSON.parse(rawPokemonData);
+//       console.log(pokemonData1);
+//     }
+//   );
+// }
+
+// whichPokemonIsHeavier("ditto");
+
+/////////////////////////////////////////////////////////////
+
+//          MIKE'S CODE FOR WHICH POKEMON IS HEAVIER
+
+//        need to do more work with callbacks, don't really get them
+
+function whichPokemonIsHeavier(pokemonName1, pokemonName2, callback) {
+  makeGetRequest(
+    `https://pokeapi.co/api/v2/pokemon/${pokemonName1}`,
+    (rawPokemonData) => {
+      const pokemonData1 = JSON.parse(rawPokemonData);
+      makeGetRequest(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName2}`,
+        (rawPokemonData2) => {
+          const pokemonData2 = JSON.parse(rawPokemonData2);
+          if (pokemonData1.weight > pokemonData2.weight) {
+            callback(
+              `${pokemonData1.name} is ${
+                pokemonData1.weight - pokemonData2.weight
+              }kgs heavier than ${pokemonData2.name}`
+            );
+          } else if (pokemonData1.weight < pokemonData2.weight) {
+            callback(
+              `${pokemonData2.name} is ${
+                pokemonData2.weight - pokemonData1.weight
+              }kgs heavier than ${pokemonData1.name}`
+            );
+          } else {
+            callback(
+              `${pokemonData1.name} and ${pokemonData2.name} are the same weight`
+            );
+          }
+        }
+      );
     }
-    // once we've done parsing through the data we can make a callback to send it back to the user, we can think of the above code as a blackbox and then the line just below will send the data back to the user
-    callback(statsArray);
-  });
+  );
 }
 
-getPokemonStats("ditto", (statsArray) => {
-  // not sure why the callback is defined like this
-  console.log(statsArray);
+whichPokemonIsHeavier("charizard", "charmander", (weightDescription) => {
+  console.log(weightDescription);
 });
+
+////////////////////////////////////////////////////////////////

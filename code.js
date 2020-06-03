@@ -774,6 +774,8 @@ say_hi(gets.chomp)*/
 ///////////////////////////////////////////////////////////
 //            CALLBACKS  / CALLBACK FUNCTIONS
 
+// A function that is passed to another function as a parameter
+
 // EXAMPLE
 
 // function adder(num1, num2, onComplete) {
@@ -1064,3 +1066,187 @@ XHR is the web api for sending and receiving data, this is used to make our code
 //          JQUERY
 
 // javascript library
+
+/////////////////////////////////////////////////////
+
+//            MIKE JAVASCRIPT REVIEW
+
+/*
+Most of the time Javascript is run from the browser
+
+declaration and initialization of variables
+
+console.log our print function
+
+var myVar = "myVar"
+let myLet = "myLet"
+const myConst = "myConst"
+
+const can't be modified
+lets are scoped
+vars are globally available
+if const and lets are in a block of code, they can't be accessed
+
+null = explicitly defined
+undefined = not explicity defined
+
+data structures - arrays and objects
+
+let myArray = []
+let myObject = {
+    name: "Andrew",
+    age: "100"
+}
+
+console.log(myObject.name)
+
+lodash - javascript library for helper methods
+axios - http requests
+jquery 
+react
+vue.js
+angular.js
+svelte.js
+
+objects are used alot in Javascript, Mike says an array is actually also an object with the keys specified as the indexes
+
+*/
+
+// let myObject = {
+//   name: "Andrew",
+//   age: "100",
+// };
+
+// const keyName = "name";
+// console.log(myObject.name);
+// console.log(myObject["name"]);
+// console.log(myObject[keyName]); // the square brackets allow you to pass in variables e.g
+
+////////////////////////////////////
+//      FUNCTIONS
+
+// sayHi(); //hoisting, it can grab the function even though it's below it
+
+// function sayHi(name, profession) {
+//   console.log(`Hello ${name}, profession ${profession}`);
+// }
+
+/// ANONYMOUS FUNCTION
+
+// const sayHi = function (name, profession) {
+//   console.log(`Hello ${name}, profession ${profession}`);
+// };
+
+// sayHi("Andrew", "programmer");
+
+// FAT ARROW FUNCTION
+
+// const sayHi = (name, profession) => {
+//   console.log(`Hello ${name}, profession ${profession}`);
+// };
+
+/////////////////////////////////////////////////
+//
+
+// function myFunc() {
+//   console.log("Hello word");
+//   return "My return value";
+// }
+
+// const resultOfCallingFunc = myFunc;
+
+// console.log(resultOfCallingFunc());
+
+// we can do resultOfCallingFunc() and it'll call the function inside it
+
+// if you try to console.log an uncalled function, you get the actual function itself
+
+// whereas if you console.log the called function, it'll return the call of the function
+
+//a function is a data type and you don't necessarily need to call it
+
+////////////////////////////////////////////
+//        HIGHER ORDER FUNCTIONS
+
+// function sayHi(name) {
+//   return () => {
+//     console.log("func returned from sayHi");
+//   };
+// }
+
+// const funcResult = sayHi();
+
+// console.log(funcResult);
+
+// ////////////////////////////////////////////
+
+// function sayHi() {
+//   return () => {
+//     console.log("func returned from sayHi");
+//   };
+// }
+
+// sayHi()(); // calling say hi and then called the function inside it
+//outputs "func returned from sayHi"
+
+///////////////////////////////////////////
+
+// function sayHi(name) {
+//   console.log(`hello ${name}`);
+// }
+
+// // we can pass in a function and it'll get coerced into a string
+
+// sayHi(() => {
+//   console.log("arrow func");
+// });
+
+///////////////////////////////////////////
+
+//      CLOSURE
+
+// anything declared inside a function can't get out, you can't access them from the outside
+
+// but if they're declared outside a function, a function can access em, E.G variables, lets, consts
+
+////////////////////////////////////////
+
+// function generateSayHiFunc(name) {
+//   return () => {
+//     console.log(`Hello ${name}`);
+//   };
+// }
+
+// const sayHiToMikeFunc = generateSayHiFunc("Mike");
+// // generateSayHiFunc("Mike")()
+// console.log(sayHiToMikeFunc);
+
+// sayHiToMikeFunc; // this won't do anything unless we call it using ()
+// //it also won't display anything unless we console.log it
+
+//////////////////////////////////////
+
+//  A FUNCTION GENERATING OTHER FUNCTIONS
+//
+
+// function generateSayHiFunc(name) {
+//   if (name === "Mike") {
+//     return () => {
+//       console.log(`Hello ${name} you are the creator`);
+//     };
+//   } else {
+//     return () => {
+//       console.log(`Hello ${name}`);
+//     };
+//   }
+// }
+
+// const sayHiToMikeFunc = generateSayHiFunc("Mike");
+// const sayHiToJoeFunc = generateSayHiFunc("Joe");
+// const sayHiToKatieFunc = generateSayHiFunc("Katie");
+
+// sayHiToMikeFunc();
+// sayHiToJoeFunc();
+// sayHiToKatieFunc();
+
+////////////////////////////////////////////

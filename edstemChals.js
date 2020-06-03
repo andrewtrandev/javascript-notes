@@ -135,15 +135,77 @@ The Haystack will always contain a needle, so you don't need to consider that ed
 // ];
 
 // function findNeedle(haystack) {
-//   for (i = 0; i < haystack.length; i++) {         //outer loop will loop through the arrays
-//     for (j = 0; j < haystack.length; j++) {          // inner loop will loop through the elements within the array
-//       if (haystack[i][j] == "N")                     // if array [0] element [0] is N, else increment j++ and look check again, note inner loops will complete before outer loops, so this should check all the j elements of the array iz
+//   for (i = 0; i < haystack.length; i++) {
+//     //outer loop will loop through the arrays
+//     for (j = 0; j < haystack.length; j++) {
+//       // inner loop will loop through the elements within the array
+//       if (haystack[i][j] == "N")
+//         // if array [0] element [0] is N, else increment j++ and look check again, note inner loops will complete before outer loops, so this should check all the j elements of the array iz
 //         // return `${haystack[i][j]} found at [${i}, ${j}]`;
-//         return [i, j];                                    // return location of N as an array
+//         return [i, j]; // return location of N as an array
 //     }
 //   }
 // }
 
 // console.log(findNeedle(stack));
 
-////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////
+
+/*
+Palindrome
+Whats the most important issue of 2020 so far?!
+Thats right... We need to be able to tell if a string is a palindrome.
+ie it reads the same forwards and backwards.
+
+NB pay close attention to the examples below
+
+
+eg.
+
+palindrome("race car") // should return true
+
+palindrome("not a palindrome") // should return false
+
+palindrome("A man, a plan, a canal. Panama") // should return true
+
+palindrome("never odd or even") // should return true
+
+palindrome("nope") // should return false
+
+palindrome("almostomla") // should return false
+
+palindrome("My age is 0, 0 si ega ym.") // should return true
+
+palindrome("1 eye for of 1 eye.") // should return false
+*/
+
+//////////////////////////////////////////////////////////////
+
+// function palindrome(str) {
+//   str = str.replace(/\W/g, ""); // using regex to replace any non word characters with nothing, g modifier makes it so it doesn't stop matching after the first instance
+//   str = str.toLowerCase(); // downcase letters
+//   reverseStr = str.split("").reverse().join(""); //make a second variable that we can use to reverse the string and check, we need to split it into an array, so we can use the reverse method
+//   if (str === reverseStr) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// console.log(palindrome("race car")); // should return true
+
+// console.log(palindrome("not a palindrome")); // should return false
+
+// console.log(palindrome("A man, a plan, a canal. Panama")); // should return true
+
+// console.log(palindrome("never odd or even")); // should return true
+
+// console.log(palindrome("nope")); // should return false
+
+// console.log(palindrome("almostomla")); // should return false
+
+// console.log(palindrome("My age is 0, 0 si ega ym.")); // should return true
+
+// console.log(palindrome("1 eye for of 1 eye.")); // should return false
+
+//////////////////////////////////////////////////////////////////////

@@ -1250,3 +1250,46 @@ objects are used alot in Javascript, Mike says an array is actually also an obje
 // sayHiToKatieFunc();
 
 ////////////////////////////////////////////
+
+//      SYNC / ASYNC
+
+// JAVASCRIPT IS A SINGLE THREADED PROGRAMMING LANGUAGE
+
+// it is synchronous and blocking
+
+// time outs and ajax requests - the two main things async is used fgor
+
+console.log("before timeout");
+setTimeout(() => {
+  console.log("times up");
+}, 1000);
+console.log("after timeout");
+
+// the callback is a function that tells us that the async thing is over
+
+function myLongRunningFunc(callback) {
+  setTimeout(() => {
+    callback("Mike");
+  }, 3000);
+}
+
+myLongRunningFunc((name) => {
+  console.log(name);
+});
+
+//////////////////////////////////////////////////////
+
+//      AJAX REQUESTS
+
+function makeGetRequest(url, callback) {
+  const request = new XMLHttpRequest();
+  request.open("GET", url, true);
+  request.send();
+  request.onload = callback; // when the request is done, it'll initiate the callback, which we've fed in below in the makeGetRequest.
+}
+
+makeGetRequest("https://randomuser.me/api/", (data) => {
+  console.log(data.target.responseText);
+});
+
+// oh since this request is async, we need a callback to tell us when this request is done

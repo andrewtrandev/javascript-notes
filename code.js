@@ -1123,7 +1123,12 @@ objects are used alot in Javascript, Mike says an array is actually also an obje
 // console.log(myObject[keyName]); // the square brackets allow you to pass in variables e.g
 
 ////////////////////////////////////
-//      FUNCTIONS
+//      FUNCTIONS / FUNCTION EXPRESSIONS
+
+// A JS FUNCTION CAN BE STORED IN A VARIABLE FOR LATER USE
+
+/////////////////////////////////
+//    STANDARD FUNCTION AND HOISTING
 
 // sayHi(); //hoisting, it can grab the function even though it's below it
 
@@ -1131,19 +1136,40 @@ objects are used alot in Javascript, Mike says an array is actually also an obje
 //   console.log(`Hello ${name}, profession ${profession}`);
 // }
 
-/// ANONYMOUS FUNCTION
+///////////////////////////////
+///       ANONYMOUS FUNCTION
 
-// const sayHi = function (name, profession) {
+// below is an anonymous function, it's stored in a variable and hence doesn't need a name, it is called using the variable name sayHi
+
+// const sayHi = function (name, profession) {       //the function name is now a const object
 //   console.log(`Hello ${name}, profession ${profession}`);
 // };
 
 // sayHi("Andrew", "programmer");
 
-// FAT ARROW FUNCTION
+////////////////////////////////
+//      FAT ARROW FUNCTION
 
 // const sayHi = (name, profession) => {
+//   // so the arrow goes on the right hand-side and acts like the function key word?
 //   console.log(`Hello ${name}, profession ${profession}`);
 // };
+
+// console.log("andrew", "programmer");
+
+////////////////////////////////////////////
+//        MORE ON ARROW FUNCTIONS
+// ES5
+// var x = function (x, y) {
+//   return x * y;
+// };
+
+// ES6
+// const x = (x, y) => x * y;
+
+// You don't need the function or return keyword, nor the curly brackets.
+// You can only omit the return keyword, if it's a single statement
+// you use const for functions as the function expression is always a constant value
 
 /////////////////////////////////////////////////
 //

@@ -1285,37 +1285,157 @@ objects are used alot in Javascript, Mike says an array is actually also an obje
 
 // time outs and ajax requests - the two main things async is used fgor
 
-console.log("before timeout");
-setTimeout(() => {
-  console.log("times up");
-}, 1000);
-console.log("after timeout");
+// console.log("before timeout");
+// setTimeout(() => {
+//   console.log("times up");
+// }, 1000);
+// console.log("after timeout");
 
-// the callback is a function that tells us that the async thing is over
+// // the callback is a function that tells us that the async thing is over
 
-function myLongRunningFunc(callback) {
-  setTimeout(() => {
-    callback("Mike");
-  }, 3000);
-}
+// function myLongRunningFunc(callback) {
+//   setTimeout(() => {
+//     callback("Mike");
+//   }, 3000);
+// }
 
-myLongRunningFunc((name) => {
-  console.log(name);
-});
+// myLongRunningFunc((name) => {
+//   console.log(name);
+// });
+
+// //////////////////////////////////////////////////////
+
+// //      AJAX REQUESTS
+
+// function makeGetRequest(url, callback) {
+//   const request = new XMLHttpRequest();
+//   request.open("GET", url, true);
+//   request.send();
+//   request.onload = callback; // when the request is done, it'll initiate the callback, which we've fed in below in the makeGetRequest.
+// }
+
+// makeGetRequest("https://randomuser.me/api/", (data) => {
+//   console.log(data.target.responseText);
+// });
+
+// oh since this request is async, we need a callback to tell us when this request is done
 
 //////////////////////////////////////////////////////
 
-//      AJAX REQUESTS
+//              PROMISES  4.6.20
 
-function makeGetRequest(url, callback) {
-  const request = new XMLHttpRequest();
-  request.open("GET", url, true);
-  request.send();
-  request.onload = callback; // when the request is done, it'll initiate the callback, which we've fed in below in the makeGetRequest.
-}
+// a promise can be in 3 states,
+// pending - doing its thang,
+// reject - error has been thrown,
+//  resolved - everything is ok, action is done
 
-makeGetRequest("https://randomuser.me/api/", (data) => {
-  console.log(data.target.responseText);
-});
+//resolve is a function that can be passed a value and will return it on completion
 
-// oh since this request is async, we need a callback to tell us when this request is done
+// resolve and reject are functions provided by the Promise constructor
+
+// let myPromise = new Promise((resolve, reject) => {
+//   resolve("The promised value");
+//   reject("the error message");
+//   // console.log("In Promise");
+// });
+
+/*
+ resolve is the function that gets passed to .then
+reject is the function that gets passed to .catch
+ .then and .catch are async code, so they'll come after sync code
+*/
+
+// myPromise
+//   .then((thePromisedValue) => {
+//     console.log(thePromisedValue); //the params thePromisedValue and error could be anything
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+//////////////////////////////////////////////////////////////////////
+
+// function adderWithPromise(num1, num2) {
+//   return new Promise((resolve, reject) => {
+//     // long winded async code
+//     resolve(num1 + num2);
+//   });
+// }
+
+// console.log(adderWithPromise(2, 5)); //this returns us a promise with the value of 7, but we want the value back
+
+// below code is used to get back our promise value. We use .then to get the resolve function from the promise.
+
+// adderWithPromise(2, 5).then((sum) => {
+//   console.log(sum);
+// });
+
+//////////////////////////////////////////////////
+
+//        CHAINING THENS / PIPELINING
+
+/*
+we can chain .then and .catch together
+.catch is usually placed at the end and can be useful to output errors
+*/
+
+// adderWithPromise(2, 5)
+//   .then((sum) => {
+//     return sum + 60;
+//   })
+//   .then((valueFromPreviousThen) => {
+//     throw "myerror";
+//     console.log(valueFromPreviousThen);
+//   })
+//   .catch((e) => {
+//     console.log(`Error: ${e}`);
+//   });
+
+////////////////////////////////////////////////////
+
+//    PROMISIFYING
+
+// We can wrap a promise around a http get request, so you don't need a callback
+
+// function makeGetRequest(url) {
+//   return new Promise((resolve, reject) => {
+//     const request = new XMLHttpRequest();
+//     request.open("GET", url, true);
+//     request.onload = (data) => {
+//       resolve(data.target.responseText);
+//     };
+
+//     request.onerror = reject;
+//     request.send();
+//   });
+// }
+
+//making a function that takes a pokemon name and sends it off as a http get request (which is also a function we've created that has been promisified), this function returns a promise with the pokemon data and parseses it into a Javascript Object. The resolve is given the value of myPokemon.
+
+// we parse it into a javascript object, so it's more readable
+// function getPokemon(pokemonName) {
+//   return new Promise((resolve, reject) => {
+//     makeGetRequest(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+//       .then((rawPokemonData) => {
+//         const myPokemon = JSON.parse(rawPokemonData);
+//         resolve(myPokemon);
+//       })
+//       .catch((e) => {
+//         console.log(e);
+//       });
+//   });
+// }
+
+// calling getPokemon with ditto, we can then grab the promise resolve function using .then and output it
+// getPokemon("ditto").then((myPokemon) => {
+//   console.log(myPokemon);
+// });
+
+// makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto").then(
+//   (rawPokemonData) => {
+//     const myPokemon = JSON.parse(rawPokemonData);
+//     console.log(myPokemon);
+//   }
+// );
+
+////////////////////////////////////////////////////////////////

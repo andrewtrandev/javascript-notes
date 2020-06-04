@@ -1384,7 +1384,7 @@ we can chain .then and .catch together
 //     return sum + 60;
 //   })
 //   .then((valueFromPreviousThen) => {
-//     throw "myerror";
+//     // throw "myerror";
 //     console.log(valueFromPreviousThen);
 //   })
 //   .catch((e) => {
@@ -1410,7 +1410,7 @@ we can chain .then and .catch together
 //   });
 // }
 
-//making a function that takes a pokemon name and sends it off as a http get request (which is also a function we've created that has been promisified), this function returns a promise with the pokemon data and parseses it into a Javascript Object. The resolve is given the value of myPokemon.
+//making a function that takes a pokemon name and sends it off as a http get request (which is also a function we've created that has been promisified), this function returns a promise with the pokemon data and parses it into a Javascript Object. The resolve is given the value of myPokemon.
 
 // we parse it into a javascript object, so it's more readable
 
@@ -1432,13 +1432,6 @@ we can chain .then and .catch together
 // getPokemon("ditto").then((myPokemon) => {
 //   console.log(myPokemon);
 // });
-
-// makeGetRequest("https://pokeapi.co/api/v2/pokemon/ditto").then(
-//   (rawPokemonData) => {
-//     const myPokemon = JSON.parse(rawPokemonData);
-//     console.log(myPokemon);
-//   }
-// );
 
 //////////////////////////////////////////////////////////////
 
@@ -1469,29 +1462,34 @@ we can chain .then and .catch together
 
 // promisifying - converting code that uses callbacks to use promises
 // Mike says promises are cleaner/modern versus callbacks
+
 // function setTimeoutPromise(miliseconds) {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(resolve, miliseconds);
 //   });
 // }
 
-// setTimeoutPromise(3000).then(() => {
+// setTimeoutPromise(1000).then(() => {
 //   console.log("Times up");
 // });
 
 //////////////////////////////////////////////////////////////
 
 //        FETCH
+//  https://javascript.info/fetch
 
-// the first respone we get back is raw http, which we need to convert to json
+// the response we get back is raw http, which we need to convert to json by doing response.json()
 // we then need to method chain another .then to output the joke
+// Fetch returns a promise, that's why we can use the .then method
 
-// fetch("https://api.chucknorris.io/jokes/random").then((response) => {
-//   return response.json();
-// });
-// .then((joke) => {
-//   console.log(joke.value);
-// });
+// fetch("https://api.chucknorris.io/jokes/random")
+//   .then((response) => {
+//     return response.json();
+//   })
+//   .then((joke) => {
+//     console.log(joke);
+//     console.log(joke.value);
+//   });
 
 //generally when you make a http request you use fetch or an external library
 
@@ -1520,9 +1518,9 @@ we can chain .then and .catch together
 
 //        ASYNC / AWAIT
 
-async function run() {
-  const response = await axios.get("https://api.chucknorris.io/jokes/random");
-  console.log(response.data.value);
-}
-run();
-console.log("after run func");
+// async function run() {
+//   const response = await axios.get("https://api.chucknorris.io/jokes/random");
+//   console.log(response.data.value);
+// }
+// run();
+// console.log("after run func");

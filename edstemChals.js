@@ -252,12 +252,20 @@ onlyDigits("qrewer4wer") // returns false
 onlyDigits("0O0") // returns false
 onlyDigits("000") // returns true*/
 
-const onlyDigits = (string) => {
-  if (string.match(/[0-9]g/)) {
-    return true;
-  } else {
-    return false;
-  }
-};
+////////////////////////////////////
 
-onlyDigits("000");
+//    SOL 1
+
+// const onlyDigits = (string) => {
+//   if (string.match(/\D/g)) {
+//     return false;
+//   } else {
+//     return true;
+//   }
+// };
+
+// console.log(onlyDigits("000")); // true
+// console.log(onlyDigits("0O0")); //false
+// console.log(onlyDigits("qrewer4wer")); //false
+
+/////////////////////////////////////

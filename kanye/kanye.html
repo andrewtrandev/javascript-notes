@@ -5,19 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script
-      type="text/javascript"
-      src="./kanye.js
-    "
-    ></script>
+    <script type="text/javascript" src="./kanye.js"></script>
+    <link rel="stylesheet" href="kanye.css" />
   </head>
   <body>
     <button id="kanye">
       Gimme Kanye Quote
     </button>
+
+    <button id="dad">
+      Gimme Dad Joke
+    </button>
+
     <script>
       document.getElementById("kanye").addEventListener("click", kanyeQuote);
-
+      document.getElementById("dad").addEventListener("click", dadJoke);
       function kanyeQuote() {
         axios.get("https://api.kanye.rest").then(function (response) {
           console.log(response.data);
@@ -25,6 +27,22 @@
           // window.alert(response.data.quote);
           // document.write(response.data.quote); // not useful, deletes button
         });
+      }
+
+      // config to send headers
+      const config = {
+        headers: {
+          Accept: "application/json",
+        },
+      };
+
+      function dadJoke() {
+        axios
+          .get("https://icanhazdadjoke.com/", config)
+          .then((res) => {
+            console.log(res.data), alert(res.data.joke);
+          })
+          .catch((err) => console.error(err));
       }
     </script>
   </body>

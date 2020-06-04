@@ -1413,6 +1413,7 @@ we can chain .then and .catch together
 //making a function that takes a pokemon name and sends it off as a http get request (which is also a function we've created that has been promisified), this function returns a promise with the pokemon data and parseses it into a Javascript Object. The resolve is given the value of myPokemon.
 
 // we parse it into a javascript object, so it's more readable
+
 // function getPokemon(pokemonName) {
 //   return new Promise((resolve, reject) => {
 //     makeGetRequest(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
@@ -1427,6 +1428,7 @@ we can chain .then and .catch together
 // }
 
 // calling getPokemon with ditto, we can then grab the promise resolve function using .then and output it
+
 // getPokemon("ditto").then((myPokemon) => {
 //   console.log(myPokemon);
 // });
@@ -1438,4 +1440,89 @@ we can chain .then and .catch together
 //   }
 // );
 
+//////////////////////////////////////////////////////////////
+
+//      PROMISE.ALL   / PROMISE.RACE
+
+// const favPokemon = [
+//   getPokemon("charmander"),
+//   getPokemon("squirtle"),
+//   getPokemon("bulbasaur"),
+//   getPokemon("pikachu"),
+// ];
+
+// //Promise.all - this waits for all the promises to resolve and then combines all the promises into an array
+
+// Promise.all(favPokemon).then((favPokemonResults) => {
+//   console.log(favPokemonResults);
+// });
+
+// // Promise.race returns the first value, not used much
+
+// Promise.race(favPokemon).then((favPokemonResults) => {
+//   console.log(favPokemonResults);
+// });
+
 ////////////////////////////////////////////////////////////////
+
+//        PROMISIFYING - PART 2
+
+// promisifying - converting code that uses callbacks to use promises
+// Mike says promises are cleaner/modern versus callbacks
+// function setTimeoutPromise(miliseconds) {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(resolve, miliseconds);
+//   });
+// }
+
+// setTimeoutPromise(3000).then(() => {
+//   console.log("Times up");
+// });
+
+//////////////////////////////////////////////////////////////
+
+//        FETCH
+
+// the first respone we get back is raw http, which we need to convert to json
+// we then need to method chain another .then to output the joke
+
+// fetch("https://api.chucknorris.io/jokes/random").then((response) => {
+//   return response.json();
+// });
+// .then((joke) => {
+//   console.log(joke.value);
+// });
+
+//generally when you make a http request you use fetch or an external library
+
+//////////////////////////////////////////////////////////
+
+//        EXTERNAL LIBRARIES
+
+// Mike recommends looking at GitHub stars, latest commits and npm weekly downloads to see if something is useful/relevant
+
+// https://github.com/axios/axios
+
+// If we want to use javascript in the browser we need to include the script tag
+
+//<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+// if your page relies on the script then put it in the head
+// if your page doesn't then you put it before the ending body tag
+// you also want to grab scripts from a CDN
+
+// console.log(axios);
+
+// axios.get("https://api.chucknorris.io/jokes/random").then((response) => {
+//   console.log(response.data.value);
+// });
+
+////////////////////////////////////////////////////////////////////////
+
+//        ASYNC / AWAIT
+
+async function run() {
+  const response = await axios.get("https://api.chucknorris.io/jokes/random");
+  console.log(response.data.value);
+}
+run();
+console.log("after run func");

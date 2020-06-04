@@ -181,6 +181,8 @@ palindrome("1 eye for of 1 eye.") // should return false
 
 //////////////////////////////////////////////////////////////
 
+//      SOLUTION 1
+
 // function palindrome(str) {
 //   str = str.replace(/\W/g, ""); // using regex to replace any non word characters with nothing, g modifier makes it so it doesn't stop matching after the first instance
 //   str = str.toLowerCase(); // downcase letters
@@ -190,6 +192,34 @@ palindrome("1 eye for of 1 eye.") // should return false
 //   } else {
 //     return false;
 //   }
+// }
+
+/////////////////////////////////////////////////////////////
+
+//      SOLUTION 2
+//      if you don't want to use reverse string
+
+// function palindrome(str) {
+//   str = str.replace(/\W/g, ""); //replace any non word characters w/ nothing
+//   str = str.toLowerCase();
+//   reverseStr = str;
+//   reverseStr = reverse(reverseStr);
+
+//   if (str === reverseStr) {
+//     return true;
+//   } else {
+//     return false;
+//   }
+// }
+
+// function reverse(string) {
+//   string = string.split("");
+//   let reverse = [];
+//   for (i = string.length; i > 0; i--) {
+//     // for string.length number of values
+//     reverse.push(string[i - 1]); //push the last element into an array,
+//   }
+//   return reverse.join("");
 // }
 
 // console.log(palindrome("race car")); // should return true
@@ -209,3 +239,25 @@ palindrome("1 eye for of 1 eye.") // should return false
 // console.log(palindrome("1 eye for of 1 eye.")); // should return false
 
 //////////////////////////////////////////////////////////////////////
+
+/*
+Only digits
+Often we want a form  field to only contain digits. eg a phone number. 
+
+Your challenge is to create the validation for this. 
+
+eg:
+
+onlyDigits("qrewer4wer") // returns false
+onlyDigits("0O0") // returns false
+onlyDigits("000") // returns true*/
+
+const onlyDigits = (string) => {
+  if (string.match(/[0-9]g/)) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+onlyDigits("000");

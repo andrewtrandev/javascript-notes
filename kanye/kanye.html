@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script
+      type="text/javascript"
+      src="./kanye.js
+    "
+    ></script>
+  </head>
+  <body>
+    <button id="kanye">
+      Gimme Kanye Quote
+    </button>
+    <script>
+      document.getElementById("kanye").addEventListener("click", kanyeQuote);
+
+      function kanyeQuote() {
+        axios.get("https://api.kanye.rest").then(function (response) {
+          console.log(response.data);
+          alert(response.data.quote);
+          // window.alert(response.data.quote);
+          // document.write(response.data.quote); // not useful, deletes button
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -268,4 +268,89 @@ onlyDigits("000") // returns true*/
 // console.log(onlyDigits("0O0")); //false
 // console.log(onlyDigits("qrewer4wer")); //false
 
-/////////////////////////////////////
+/////////////////////////////////////////////////////////////////////
+
+/*
+Pagination
+Pagination Class Create a class that will handle content pagination. The class should take 2 parameters: 
+
+items (default: []): An array of the contents to paginate.
+
+pageSize (default: 10): Number of items to show on each page
+
+It should have a property currentPage that starts on the first page when created.
+
+You will have to implement the following methods:
+
+prevPage Turn to previous page. If already at first page, notify user You are on the first page
+
+nextPage Turn to next page. If already at last page, notify user You are on the last page
+
+firstPage Go to first page 
+
+lastPage Go to last page
+
+goToPage Takes an integer as input and goes to that page. If page doesn't exist, stay on current page, and notify user that page doesn't exist Page not found 
+
+Note: these methods should be chainable -> pagination.nextPage().nextPage()
+
+getVisibleItems Return all items on current page (this will be an array of length pageSize) 
+*/
+
+////////////////////////////////////////////////////////////////////////
+
+class Pagination {
+  pageSize = 10;
+  currentPage = 1;
+  constructor(items, pageSize) {
+    this.items = items;
+    this.pageSize = pageSize;
+    this.currentPage = 1;
+  }
+
+  prevPage() {
+    if (this.currentPage == 1) {
+      return `You are on the first page`;
+    } else {
+      this.currentPage -= 1;
+    }
+  }
+
+  nextPage() {
+    if (this.currentPage == this.pageSize) {
+      return `You are on the last page`;
+    } else {
+      return (this.currentPage += 1);
+    }
+  }
+
+  firstPage() {
+    return (this.currentPage = 1);
+  }
+
+  lastPage() {
+    return (this.currentPage = this.pageSize);
+  }
+
+  goToPage(page) {
+    if (page < this.currentPage || page > this.pageSize) {
+      return `Page not found`;
+    } else {
+      return (this.currentPage = page);
+    }
+  }
+
+  getVisibleItems() {
+    return this.items;
+  }
+}
+
+const page = new Pagination(["1", "2", "3"], 10);
+// page.nextPage();
+// // page.prevPage();
+// page.firstPage();
+// page.lastPage();
+// console.log(page.goToPage(15));
+
+page.nextPage().nextPage();
+// console.log(page);

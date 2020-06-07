@@ -1525,16 +1525,18 @@ we can chain .then and .catch together
 // run();
 // console.log("after run func");
 
-function getPokemon(pokemonName) {
-  return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
-}
-
 //async allows us to make async code
 // the previous methods we were using were given to us by js, i.e setTimeout, axios, fetch
 
 // we can use await to wait for the async operation to be finished
 // if we don't use await, it acts as synchronous code
-// await must be using inside functions
+// await must be used inside functions
+
+// function for grabbing a pokemon's data from the api
+
+// function getPokemon(pokemonName) {
+//   return axios.get(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`);
+// }
 
 // async function run() {
 //   const response = await getPokemon("charmander");
@@ -1562,7 +1564,7 @@ function getPokemon(pokemonName) {
 
 //        FOR LOOP AND ASYNC/AWAIT
 
-// a way for us to output each value 1 by 1
+// a way for us to output each value 1 by 1 instead of all at the same time in something like a Promise.all
 
 // async function run() {
 //   const pokemonNames = ["pikachu", "charmander", "squirtle"];
@@ -1572,12 +1574,13 @@ function getPokemon(pokemonName) {
 //     console.log(response.data.name);
 //   }
 // }
+// run();
 
 ///////////////////////////////////////
 
 //        FOR EACH AND ASYNC/AWAIT
 
-// need to chuck async before pokemonName because forEach is a callback
+// need to chuck async before pokemonName because forEach runs a function on each value, so I think it needs to apply async to each one of them
 // if you code it like the normal for loop it'll error
 
 // function run() {
@@ -1589,45 +1592,46 @@ function getPokemon(pokemonName) {
 //   });
 // }
 
+// run();
 //////////////////////////////////////
 
 // async functions always return a promise
 // example of us awaiting an array of values using Promise.all
 
-async function run() {
-  const pokemonNames = [
-    getPokemon("pikachu"),
-    getPokemon("charmander"),
-    getPokemon("squirtle"),
-  ];
+// async function run() {
+//   const pokemonNames = [
+//     getPokemon("pikachu"),
+//     getPokemon("charmander"),
+//     getPokemon("squirtle"),
+//   ];
 
-  const arrayOfPokemon = await Promise.all(pokemonNames);
+//   const arrayOfPokemon = await Promise.all(pokemonNames);
 
-  console.log(arrayOfPokemon);
-}
+//   console.log(arrayOfPokemon); // display results of promises
+// }
 
-console.log(run());
+// console.log(run()); //promise pending
 
 /////////////////////////////////////
 
-//    GETTING OUTPUT FROM ASYNC
-//    cause they always return promises
+//  GETTING OUTPUT FROM ASYNC
+//  cause they always return promises
 
-async function getPokemon(pokemonName) {
-  const result = await axios.get(
-    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-  );
-  return result;
-}
+// async function getPokemon(pokemonName) {
+//   const result = await axios.get(
+//     `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+//   );
+//   return result;
+// }
 
-//    METHOD 1 - WE CAN WAIT FOR IT IN ANOTHER ASYNC FUNCTION
-async function run() {
-  console.log(await getPokemon("charmander"));
-}
+// //    METHOD 1 - WE CAN WAIT FOR IT IN ANOTHER ASYNC FUNCTION
+// async function run() {
+//   console.log(await getPokemon("charmander"));
+// }
 
-//    METHOD 2 - WE CAN USE A .THEN TO GET THE RESULT
-getPokemon("charmander").then((res) => {
-  console.log(res);
-});
+// //    METHOD 2 - WE CAN USE A .THEN TO GET THE RESULT
+// getPokemon("charmander").then((res) => {
+//   console.log(res);
+// });
 
-run();
+// run();

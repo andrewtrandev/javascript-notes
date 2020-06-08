@@ -371,3 +371,65 @@ Check the Resources tab if you get stuck.
 // ); //➞ ["red flag", "blue flag", "red flag"]
 
 ///////////////////////////////////////////////////////////////////////////////////
+
+/*
+
+https://edabit.com/challenge/W6RRCaj8mZJgiRAgy
+
+Promises II: What Is a Callback?
+Callbacks are first-class functions. This means they have first-class characteristics, like being able to be passed to other functions. There was a time when callbacks were used to handle async operations, but we needed something better because of a few shortcomings (like problems with nested callbacks).
+
+Here's a simple example of a callback:
+
+function asyncFunc(cb) {
+  let result = ""
+  // After some time the result of an async opertion comes back and is put in the "result" variable.  We'll use a string for this example.   
+  result = "hello"
+  cb(result)
+}
+
+function callback(str) {
+  console.log(str)
+}
+
+asyncFunc(callback)
+console.log("goodbye")
+
+// goodbye
+// hello
+"goodbye" appears before "hello" because the async operation in asyncFunc() is non-blocking, meaning that it is set aside until it finishes but in the meantime we go ahead and call the next function.
+
+//////////////////////////////////////////////
+
+Challenge
+Fix anotherFunc() so that calls to it will change the doc variable to bye.
+Keep the setTimeout to 100ms and do not change the callback function or the doc variable.
+Notes
+Check the Resources tab for more info on callbacks.
+*/
+
+/////////////////////////////////////////////
+
+//leave set time out and do not change callback func or doc var
+// change doc var to bye
+
+//          SOLUTION
+
+// function anotherFunc(callback) {
+//   //feed in the call back
+//   let str = "bye";
+//   setTimeout(() => {}, 100);
+//   return callback(str); //invoke the callback with str so that it replaces doc with the input str
+// }
+
+// var doc = "hello";
+
+// function callback(str) {
+//   doc = str;
+// }
+
+// console.log(doc); //prints out hello
+// anotherFunc(callback);
+// console.log(doc); //prints out bye
+
+// //for whatever reason this example isn't clicking with me

@@ -782,7 +782,7 @@ say_hi(gets.chomp)*/
 //   // passing in numbers and a function
 //   const answer = num1 + num2;
 
-//   onComplete(answer); //calling the function at the end
+//   onComplete(answer); //calling the function at the end, oh this could be named anything, it's usually named callback though. It's essentially run after the digits are added, and does whatever function is passed in the parameters.
 // }
 
 // function callOnAdderComplete(answer) {

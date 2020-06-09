@@ -1,33 +1,29 @@
 const pokedex = document.getElementById("pokedex");
-console.log(pokedex);
+// console.log(pokedex);
 
-const fetchPokemon = () => {
-  const promises = [];
-  for (let i = 1; i <= 5; i++) {
-    const url = `https://pokeapi.co/api/v2/pokemon/${i}`;
-    promises.push(fetch(url).then((res) => res.json()));
-  }
-  Promise.all(promises).then((results) => {
-    const pokemon = results.map((data) => ({
-      //the map function will create a new array of our data and convert it to how we specified, in this instance it should create a pokemon object with the following properties
-      name: data.name,
-      id: data.id,
-      image: data.sprites.front_default,
-      type: data.types.map((type) => type.type.name).join(", "),
-    }));
-    displayPokemon(pokemon);
-  });
+const pokeCache = {}; //caching pokemon data so it doesn't need to make another get request
+
+const fetchPokemon = async () => {
+  const url = `https://pokeapi.co/api/v2/pokemon?limit=150`;
+  const res = await fetch(url);
+  const data = await res.json();
+  const pokemon = data.results.map((result, index) => ({
+    ...result,
+    id: index + 1,
+    image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${
+      index + 1
+    }.png`,
+  }));
+  displayPokemon(pokemon);
 };
 
 const displayPokemon = (pokemon) => {
-  console.log(pokemon);
   const pokemonHTMLString = pokemon
     .map(
       (pokeman) => `
-    <li class="card">
+    <li class="card" onclick="selectPokemon(${pokeman.id})">
         <img class="card-image" src="${pokeman.image}"/>
         <h2 class="card-title"> ${pokeman.id}. ${pokeman.name}</h2>
-        <p class= "card-subtitle">Type: ${pokeman.type}</p>
     </li>`
     )
     .join("");
@@ -35,3 +31,42 @@ const displayPokemon = (pokemon) => {
 };
 
 fetchPokemon();
+
+// the if/else statement here checks if the pokemon does not exist in the cache, in which case it'll go fetch the pokemon, else it'll retrieve the pokemon from the cache
+
+const selectPokemon = async (id) => {
+  if (!pokeCache[id]) {
+    const url = `https://pokeapi.co/api/v2/pokemon/${id}`;
+    const res = await fetch(url);
+    const pokeman = await res.json();
+    pokeCache[id] = pokeman;
+    console.log(pokeCache);
+  } else {
+    displayPopup(pokeCache[id]);
+  }
+};
+
+const displayPopup = (pokeman) => {
+  const type = pokeman.types.map((type) => type.type.name).join(", ");
+  console.log(type);
+  const image = pokeman.sprites["front_default"];
+  const htmlString = `
+  <div class="popup">
+  <button id="closeBtn"
+  onclick="closePopup()">Close</button>
+  <div class="card">
+        <img class="card-image" src="${image}"/>
+        <h2 class="card-title"> ${pokeman.id}. ${pokeman.name}</h2>
+        <p><small>Height: </small>${pokeman.height} | <small>Weight: </small>${pokeman.weight} | <small>Type: </small>${type}
+    </div>
+    </div>
+  `;
+
+  pokedex.innerHTML = htmlString + pokedex.innerHTML;
+  console.log(htmlString);
+};
+
+const closePopup = () => {
+  const popup = document.querySelector(".popup");
+  popup.parentElement.removeChild(popup);
+};

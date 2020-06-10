@@ -433,3 +433,61 @@ Check the Resources tab for more info on callbacks.
 // console.log(doc); //prints out bye
 
 // //for whatever reason this example isn't clicking with me
+
+//////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+Return the Objects Keys and Values
+Create a function that takes an object and returns the keys and values as separate arrays.
+
+Examples
+keysAndValues({ a: 1, b: 2, c: 3 })
+➞ [["a", "b", "c"], [1, 2, 3]]
+
+keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" })
+➞ [["a", "b", "c"], ["Apple", "Microsoft", "Google"]]
+
+keysAndValues({ key1: true, key2: false, key3: undefined })
+➞ [["key1", "key2", "key3"], [true, false, undefined]]
+Notes
+Remember to sort the keys.
+*/
+
+//////////////////////////////////////////////
+
+//for/in used to loop through the properties of an object
+
+//    SOL 1
+
+// function keysAndValues(array) {
+//   let keys = [];
+//   let values = [];
+//   let result = [];
+//   for (key in array) {
+//     keys.push(key);
+//     values.push(array[key]);
+//   }
+//   result.push(keys);
+//   result.push(values);
+//   return result;
+// }
+
+// console.log(keysAndValues({ a: 1, b: 2, c: 3 }));
+
+// console.log(keysAndValues({ a: "Apple", b: "Microsoft", c: "Google" }));
+
+//  SOL 2
+
+// function keysAndValues(object) {
+//   let result = [];
+//   result.push(Object.keys(object)); //grabs the keys of the object and returns as array
+//   result.push(Object.values(object)); // grabs values of an object and returns as an array
+//   return result;
+// }
+
+//  SOL 3 - bit confusing, map returns a new array
+
+// function keysAndValues(object) {
+//   console.log(Object.keys(object));
+//   return [Object.keys(object), Object.keys(object).map((x) => object[x])]; //for each key map it to object[key] which gives the value
+// }

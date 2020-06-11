@@ -491,3 +491,52 @@ Remember to sort the keys.
 //   console.log(Object.keys(object));
 //   return [Object.keys(object), Object.keys(object).map((x) => object[x])]; //for each key map it to object[key] which gives the value
 // }
+
+////////////////////////////////////////////////////////////////////////////////////
+
+/*
+https://edabit.com/challenge/rLybgi7vcxL2ykt8F
+
+Promises I: What Is a Closure?
+Closures are functions that remember their lexical environments. Lexical environments mean the environment in which the function was declared.
+
+function parent(x) {
+  return function closure() {    // Closure is declared here.
+    return x
+  }
+}
+
+const remember = parent("remembers me")
+// Seems like the variable x would be gone after
+// parent is executed, but it's not.
+
+closure()
+// Returns "remembers me" because the inner
+// function remembers x.
+
+Fix the greetingMaker() function so that it works with the greeting() function.
+The greeting() function has already been created (check the Tests tab).
+
+Example
+const greeting = greetingMaker("Hello")
+greeting("James") ➞ "Hello, James"
+Notes
+Check the Resources tab for more info on closures.
+*/
+
+////////////////////////////////////////////////////////
+
+// This is kinda trippy cause when you invoke greetingMaker it returns a function called greeting but greeting can still access parameters defined in it's parent scope - greetingMaker even though you would think it should be self-enclosed or separated from it's parent.
+
+// function greetingMaker(salutation) {
+//   return function greeting(name) {
+//     return salutation + ", " + name;
+//   };
+// }
+
+// //Method 1 of invoking closure
+// const greeting = greetingMaker("Hello");
+// console.log(greeting("Andrew"));
+
+// //Method 2 of invoking closure
+// console.log(greetingMaker("hello")("andrew")); // we can also invoke the closure like this, this invokes greetingMaker and then invokes the function "greeting" which is inside it

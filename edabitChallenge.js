@@ -594,16 +594,27 @@ Don't use Math.hypot().
 
 */
 
+//    STARTER CODE
+//var magnitude = vector => //code goes here
+
 ///////////////////////////////////////
 
-array1 = [3, 4];
-const map1 = array1.map((x) => x * x);
-const reducer = (accumulator, currentvalue) => accumulator + currentvalue;
+//    SOL 1 - had to look at solutions, cause couldn't figure out how to structure the answer
 
-console.log(map1.reduce(reducer));
-// var magnitude = vector =>
+//sqrt -  to find the square root
+//map - vector.map((vector) => vector * vector), so for each vector we'll use map to return a new array and make each value equal to vector * vector
+//reduce - .reduce((acc, curr) => acc + curr, 0), we'll then apply reduce and apply the reducer function that we provide as (accumulator, currentvalue) => accumulator + currentvalue, initialValue = 0
+// var magnitude = (vector) => {
+//   return Math.sqrt(
+//     vector.map((vector) => vector * vector).reduce((acc, curr) => acc + curr, 0) // if I don't have the zero at the end of this reduce method then the empty array errors. I think this 0 is the initial value. AH yep https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+//     // According to the above link, calling reduce() on an empty arrow without an initialValue will throw a TypeError
+//   );
+// };
 
-// const array1 = [1, 2, 3, 4];
-// const reducer = (accumulator, currentValue) => accumulator - currentValue;
+// console.log(magnitude([3, 4]));
 
-// console.log(array1.reduce(reducer));
+// console.log(magnitude([2, 3, 6, 1, 8])); //➞ 10.677078252031311
+
+// console.log(magnitude([0, 0, -10])); //  ➞ 10
+
+// console.log(magnitude([])); //  ➞ 0

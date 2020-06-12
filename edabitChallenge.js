@@ -540,3 +540,70 @@ Check the Resources tab for more info on closures.
 
 // //Method 2 of invoking closure
 // console.log(greetingMaker("hello")("andrew")); // we can also invoke the closure like this, this invokes greetingMaker and then invokes the function "greeting" which is inside it
+
+///////////////////////////////////////////////////////////////////
+/*
+https://edabit.com/challenge/WjXHgXLAvMxNvD6h2
+
+No Conditionals?
+Write a function that returns 0 if the input is 1, and returns 1 if the input is 0.
+
+Examples
+flip(1) ➞ 0
+
+flip(0) ➞ 1
+Notes
+Try completing this challenge without using any:
+
+Conditionals
+Ternary operators
+Negations
+Bit operators
+*/
+
+//    SOL 1
+
+// function flip(y) {
+//   x = [1, 0];
+//   return x[y];
+// }
+
+////////////////////////////////////////////////////////////////////////////////////
+
+/*
+https://edabit.com/challenge/yyKv8f4FrZPDaJbDs
+
+An Introduction to the Map-Reduce Pattern
+You will be implementing a basic case of the map-reduce pattern in programming. Use the built in JavaScript array functions .map() and .reduce() to solve the following problem.
+
+Given a vector stored as an array of numbers, find the magnitude of the vector (this is similar to the function Math.hypot()). Use the standard distance formula for n-dimensional Cartesian coordinates.
+
+Examples
+magnitude([3, 4]) ➞ 5
+
+magnitude([0, 0, -10]) ➞ 10
+
+magnitude([]) ➞ 0
+
+magnitude([2, 3, 6, 1, 8] ) ➞ 10.677078252031311
+Notes
+The array can have any length.
+The input array will contain integers (except for empty array [] ➞ 0).
+Use both .map() and .reduce().
+Don't use Math.hypot().
+
+*/
+
+///////////////////////////////////////
+
+array1 = [3, 4];
+const map1 = array1.map((x) => x * x);
+const reducer = (accumulator, currentvalue) => accumulator + currentvalue;
+
+console.log(map1.reduce(reducer));
+// var magnitude = vector =>
+
+// const array1 = [1, 2, 3, 4];
+// const reducer = (accumulator, currentValue) => accumulator - currentValue;
+
+// console.log(array1.reduce(reducer));

@@ -618,3 +618,50 @@ Don't use Math.hypot().
 // console.log(magnitude([0, 0, -10])); //  ➞ 10
 
 // console.log(magnitude([])); //  ➞ 0
+
+//////////////////////////////////////////////////////////////////////////////////////
+
+/*
+https://edabit.com/challenge/zaJeE6susYdwRyB6j
+
+Anonymous Functions All The Way Down
+Create a function which takes a parameter n and returns a function such that it, when called n times, returns the string "edabit".
+
+Examples
+lambdaDepth(0) ➞ "edabit"
+
+lambdaDepth(1)() ➞ "edabit"
+
+lambdaDepth(2)()() ➞ "edabit"
+
+typeof lambdaDepth(2)() ➞ "function"
+Notes
+num will always be a non-negative integer.
+If num == 0, return "edabit".
+If num > 0, return a function.
+All non-example test cases come in two forms: checking whether lambda_depth(k), after being called k times, returns a string, and checking whether lambda_depth(k) returns a function.
+*/
+
+// STARTER CODE
+
+//lambdaDepth = (n) => eval("() => ".repeat(n) + '"edabit"');
+
+//////////////////////////////////////////
+
+//    SOL 1 - this is pretty confusing
+
+//function that takes a parameter n
+// returns a function
+//when called n times, returns the string "edabit"
+
+//first we define a funciton and that it takes a parameter n
+// when it is called n times, it'll return a string called "edabit"
+// else keep returning a function and subtract 1 from n until it hits 0 and we can return "edabit"
+
+// function lambdaDepth(n) {
+//   return n === 0 ? "edabit" : () => lambdaDepth(n - 1);
+// }
+
+// console.log(lambdaDepth(0)); //➞ "edabit"
+// console.log(lambdaDepth(1)());
+// console.log(typeof lambdaDepth(2)()); //➞ "function"

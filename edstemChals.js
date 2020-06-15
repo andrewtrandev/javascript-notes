@@ -299,58 +299,135 @@ getVisibleItems Return all items on current page (this will be an array of lengt
 
 ////////////////////////////////////////////////////////////////////////
 
-class Pagination {
-  pageSize = 10;
-  currentPage = 1;
-  constructor(items, pageSize) {
-    this.items = items;
-    this.pageSize = pageSize;
-    this.currentPage = 1;
-  }
+// UNFINISHED
 
-  prevPage() {
-    if (this.currentPage == 1) {
-      return `You are on the first page`;
-    } else {
-      this.currentPage -= 1;
+// class Pagination {
+//   pageSize = 10;
+//   currentPage = 1;
+//   constructor(items, pageSize) {
+//     this.items = items;
+//     this.pageSize = pageSize;
+//     this.currentPage = 1;
+//   }
+
+//   prevPage() {
+//     if (this.currentPage == 1) {
+//       return `You are on the first page`;
+//     } else {
+//       this.currentPage -= 1;
+//     }
+//   }
+
+//   nextPage() {
+//     if (this.currentPage == this.pageSize) {
+//       return `You are on the last page`;
+//     } else {
+//       return (this.currentPage += 1);
+//     }
+//   }
+
+//   firstPage() {
+//     return (this.currentPage = 1);
+//   }
+
+//   lastPage() {
+//     return (this.currentPage = this.pageSize);
+//   }
+
+//   goToPage(page) {
+//     if (page < this.currentPage || page > this.pageSize) {
+//       return `Page not found`;
+//     } else {
+//       return (this.currentPage = page);
+//     }
+//   }
+
+//   getVisibleItems() {
+//     return this.items;
+//   }
+// }
+
+// const page = new Pagination(["1", "2", "3"], 10);
+// // page.nextPage();
+// // // page.prevPage();
+// // page.firstPage();
+// // page.lastPage();
+// // console.log(page.goToPage(15));
+
+// page.nextPage().nextPage();
+// // console.log(page);
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+/*
+
+https://edstem.org/courses/4124/lessons/3325/slides/24569
+
+Reading Speed
+Franklin has just started to learn reading and has a new book. When he finds a word that he hasn't seen before, he will read each letter (not number or punctuation) at a rate of one second per letter, however, if he has seen the word before it will take one second to read the whole word, regardless of its length. Given a passage of text (string), predict how many seconds it will take Franklin to read the text.
+
+INPUT
+
+text a string of words separated by a space, that may contain numbers and punctuation.
+
+OUTPUT
+
+An integer representing how many seconds it would take to read the text.
+
+EXAMPLE
+
+How can they learn?
+
+readingSpeed('Hello World!);
+// => 10
+Frankin needs to read each letter, remember that punctuation is ignored.
+
+readingSpeed('Red fish Green fish');
+// => 13
+Frankin has seen the for fish the second time, so it only takes one second to read.
+
+readingSpeed('Red Fish Green fish');
+// => 13
+Fish and fish are the same word. Your code should ignore case.
+*/
+
+/////////////////////////////////////////
+
+//regex remove numbers and punctuation
+//we need to count the letters in a word, .length, our reading time is the length
+// words should be lowercased
+// if word has been read, should be read in 1 second
+
+//check if first word is equal to 2nd word, then 3rd word, then last word
+// check if 2nd word is equal to 3rd word etc
+//recursive?
+
+function wordChecker(array) {
+  let wordCount = {};
+  for (x of array) {
+    for (i = 0; i < array.length; i++) {
+      if (x == array[i]) {
+        wordCount[x] == 
+      }
     }
-  }
-
-  nextPage() {
-    if (this.currentPage == this.pageSize) {
-      return `You are on the last page`;
-    } else {
-      return (this.currentPage += 1);
-    }
-  }
-
-  firstPage() {
-    return (this.currentPage = 1);
-  }
-
-  lastPage() {
-    return (this.currentPage = this.pageSize);
-  }
-
-  goToPage(page) {
-    if (page < this.currentPage || page > this.pageSize) {
-      return `Page not found`;
-    } else {
-      return (this.currentPage = page);
-    }
-  }
-
-  getVisibleItems() {
-    return this.items;
   }
 }
 
-const page = new Pagination(["1", "2", "3"], 10);
-// page.nextPage();
-// // page.prevPage();
-// page.firstPage();
-// page.lastPage();
-// console.log(page.goToPage(15));
+function readingSpeed(text) {
+  text = text.toLowerCase();
 
-page.nextPage().nextPage();
-// console.log(page);
+  matchArray = text.match(/[a-z]/gm);
+  readSpeed = matchArray.length;
+
+  return readSpeed;
+
+  // text = text.split(" ");
+  // letterCount = text.split("");
+  // console.log(text);
+}
+
+readingSpeed("Hello World!"); // => 10
+
+// readingSpeed("Red fish Green fish"); // => 13
+
+// readingSpeed("Red Fish Green fish"); // => 13

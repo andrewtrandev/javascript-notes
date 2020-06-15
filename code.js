@@ -1635,3 +1635,51 @@ we can chain .then and .catch together
 // });
 
 // run();
+
+///////////////////////////////////////////////////////
+
+//    DOM - 15.6.20
+
+//    DOCUMENT OBJECT MODEL
+
+//    Check dom.html and dom.js
+
+// any time we want to manipulate the dom, the code needs to be below the rendered html, e.g the script tag should be after the rendered html.
+
+// document.write("hello world") - this will write something onto the DOM whereever the script tag is, not used much
+
+// document.querySelector("h1") - grabs css selectors
+
+//example of us assigning a const to the query selector
+const title = document.querySelector("h1");
+
+console.log(title);
+
+// a node is one part of the document, basically anything in the html document is considered a node, even spaces.
+
+// we can also create elements
+const myDiv = document.createElement("div");
+
+//if we want to add this div to the document body you need to append it to an exisiting node
+
+document.body.appendChild(myDiv); // this would append the div to the end of the body
+
+//example of us create an LI element and appending it
+// note that our list is a ul that we have selected
+const list = document.querySelector("ul");
+
+const myLI = document.createElement("li");
+myLI.innerHTML = "Appended LI";
+
+list.appendChild(myLI);
+
+//Mike recomments using query selectors
+
+// can be used to grab multiple elements
+//returns a html collection object, even though it looks like am array
+const title = document.getElementsByClassName("odd");
+
+// can use querySelectorAll to find all the odd classes
+const oddListItems = document.querySelectorAll(".odd");
+
+console.log(Array.from(oddListItems));

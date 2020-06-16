@@ -359,7 +359,7 @@ getVisibleItems Return all items on current page (this will be an array of lengt
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 
-/*
+/*    UNFINISHED
 
 https://edstem.org/courses/4124/lessons/3325/slides/24569
 
@@ -402,6 +402,10 @@ Fish and fish are the same word. Your code should ignore case.
 // check if 2nd word is equal to 3rd word etc
 //recursive?
 
+// .match(/[a-z]/gm) // possibly useful to check if the letter is in a-z
+// .toLowerCase() // convert text to lowercase
+
+/*
 function wordChecker(array) {
   let wordCount = {};
   for (x of array) {
@@ -412,7 +416,9 @@ function wordChecker(array) {
     }
   }
 }
+*/
 
+/*
 function readingSpeed(text) {
   text = text.toLowerCase();
 
@@ -421,12 +427,13 @@ function readingSpeed(text) {
 
   return readSpeed;
 
-  // text = text.split(" ");
-  // letterCount = text.split("");
-  // console.log(text);
+  text = text.split(" ");
+  letterCount = text.split("");
+  console.log(text);
 }
+*/
 
-readingSpeed("Hello World!"); // => 10
+// readingSpeed("Hello World!"); // => 10
 
 // readingSpeed("Red fish Green fish"); // => 13
 

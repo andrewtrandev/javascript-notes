@@ -1635,3 +1635,61 @@ we can chain .then and .catch together
 // });
 
 // run();
+
+
+//////////////////////////////////////////
+
+// 16.6.20
+
+// COOKIES - contains metadata about anything regarding users
+
+// third party cookies - saves cookie data about you and stores it on their side. 
+
+// ads delivered through iframes
+
+
+//document.cookie - can type this in console to see cookies of a website
+
+//cookie is stored in plaintext
+//document.cookie.split(';') - to split the key value pairs of a cookie into an array
+
+///////////////////////////
+//setting cookies
+//document.cookie = "identifierkey=value" - this will get appended onto the existing cookies
+
+// can also modify existing cookies by setting a new value for the key
+
+
+//////////////////////
+// setting expiration date for cookies
+// let expiry = new Date()
+// expiry.toUTCString()
+// console.log(expiry);
+
+// document.cookie = "lang=english;expires=2020-06-16T01:15:59.700Z"
+
+
+/////////////////////////
+//    localStorage
+
+// can type localStorage into the console of a browser to access
+//stored in browser and unique to the particulr url
+// localStorage.name = "andrew" //putting this into localStorage
+
+// localStorage.setItem("workplace, coderacademy") // another way of setting a key/value, legacy way of doing things
+
+// with localStorage, clients can modify what is in there
+
+
+//if you wanted to store objects in localStorage
+// localStorage.setItem("book", JSON.stringify())
+
+////////////////////////
+//    sessionStorage
+
+// can type sessionStorage into browser
+
+// stored specifically to a browser and tab
+
+// cookies get sent with the GET request and local and session storage doesn't
+

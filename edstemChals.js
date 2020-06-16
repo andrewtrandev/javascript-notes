@@ -299,58 +299,58 @@ getVisibleItems Return all items on current page (this will be an array of lengt
 
 ////////////////////////////////////////////////////////////////////////
 
-class Pagination {
-  pageSize = 10;
-  currentPage = 1;
-  constructor(items, pageSize) {
-    this.items = items;
-    this.pageSize = pageSize;
-    this.currentPage = 1;
-  }
+// class Pagination {
+//   pageSize = 10;
+//   currentPage = 1;
+//   constructor(items, pageSize) {
+//     this.items = items;
+//     this.pageSize = pageSize;
+//     this.currentPage = 1;
+//   }
 
-  prevPage() {
-    if (this.currentPage == 1) {
-      return `You are on the first page`;
-    } else {
-      this.currentPage -= 1;
-    }
-  }
+//   prevPage() {
+//     if (this.currentPage == 1) {
+//       return `You are on the first page`;
+//     } else {
+//       this.currentPage -= 1;
+//     }
+//   }
 
-  nextPage() {
-    if (this.currentPage == this.pageSize) {
-      return `You are on the last page`;
-    } else {
-      return (this.currentPage += 1);
-    }
-  }
+//   nextPage() {
+//     if (this.currentPage == this.pageSize) {
+//       return `You are on the last page`;
+//     } else {
+//       return (this.currentPage += 1);
+//     }
+//   }
 
-  firstPage() {
-    return (this.currentPage = 1);
-  }
+//   firstPage() {
+//     return (this.currentPage = 1);
+//   }
 
-  lastPage() {
-    return (this.currentPage = this.pageSize);
-  }
+//   lastPage() {
+//     return (this.currentPage = this.pageSize);
+//   }
 
-  goToPage(page) {
-    if (page < this.currentPage || page > this.pageSize) {
-      return `Page not found`;
-    } else {
-      return (this.currentPage = page);
-    }
-  }
+//   goToPage(page) {
+//     if (page < this.currentPage || page > this.pageSize) {
+//       return `Page not found`;
+//     } else {
+//       return (this.currentPage = page);
+//     }
+//   }
 
-  getVisibleItems() {
-    return this.items;
-  }
-}
+//   getVisibleItems() {
+//     return this.items;
+//   }
+// }
 
-const page = new Pagination(["1", "2", "3"], 10);
-// page.nextPage();
-// // page.prevPage();
-// page.firstPage();
-// page.lastPage();
-// console.log(page.goToPage(15));
+// const page = new Pagination(["1", "2", "3"], 10);
+// // page.nextPage();
+// // // page.prevPage();
+// // page.firstPage();
+// // page.lastPage();
+// // console.log(page.goToPage(15));
 
-page.nextPage().nextPage();
-// console.log(page);
+// page.nextPage().nextPage();
+// // console.log(page);

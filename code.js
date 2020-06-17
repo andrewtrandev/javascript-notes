@@ -1639,12 +1639,13 @@ we can chain .then and .catch together
 ///////////////////////////////////////////////////////
 
 //    DOM - 15.6.20
+//    ALSO REFER TO dom15.6.20 folder
 
 //    DOCUMENT OBJECT MODEL
 
 //    Check dom.html and dom.js
 
-// any time we want to manipulate the dom, the code needs to be below the rendered html, e.g the script tag should be after the rendered html.
+// any time we want to manipulate the dom, the code needs to be below the rendered html, e.g the script tag should be above closing body tag
 
 // document.write("hello world") - this will write something onto the DOM whereever the script tag is, not used much
 
@@ -1675,7 +1676,7 @@ we can chain .then and .catch together
 //Mike recomments using query selectors
 
 // can be used to grab multiple elements
-//returns a html collection object, even though it looks like am array
+//returns a html collection object, even though it looks like an array
 //const title = document.getElementsByClassName("odd");
 
 // can use querySelectorAll to find all the odd classes
@@ -1689,7 +1690,7 @@ we can chain .then and .catch together
 
 // COOKIES - contains metadata about anything regarding users
 
-// third party cookies - saves cookie data about you and stores it on their side.
+// third party cookies - saves cookie data about you and stores it server-side, this data could be large
 
 // ads delivered through iframes
 
@@ -1702,20 +1703,20 @@ we can chain .then and .catch together
 //setting cookies
 //document.cookie = "identifierkey=value" - this will get appended onto the existing cookies
 
-// can also modify existing cookies by setting a new value for the key
+// can also modify existing cookies by setting a new value on the key
 
 //////////////////////
 // setting expiration date for cookies
-// let expiry = new Date()
-// expiry.toUTCString()
+// let expiry = new Date();
+// expiry.toUTCString();
 // console.log(expiry);
 
-// document.cookie = "lang=english;expires=2020-06-16T01:15:59.700Z"
+// document.cookie = "lang=english;expires=2020-06-16T01:15:59.700Z";
 
 /////////////////////////
 //    localStorage
 
-// can type localStorage into the console of a browser to access
+// can type localStorage into the console of a browser to access it
 //stored in browser and unique to the particulr url
 // localStorage.name = "andrew" //putting this into localStorage
 
@@ -1723,7 +1724,7 @@ we can chain .then and .catch together
 
 // with localStorage, clients can modify what is in there
 
-//if you wanted to store objects in localStorage
+//if you wanted to store objects in localStorage you can JSON.stringify() them
 // localStorage.setItem("book", JSON.stringify())
 
 ////////////////////////
@@ -1800,7 +1801,7 @@ we can chain .then and .catch together
 // npm run start // would run the script
 
 ////////////////////////
-//      IMPORTING into a npm project
+//      IMPORTING a library into a npm project
 
 // npm install packagename e.g npm install lodash
 
@@ -1842,7 +1843,7 @@ we can chain .then and .catch together
 
 //    GETTING USER INPUT FROM NODE
 
-// use requirer module
+// use inquirer module
 // const inquirer = require("inquirer")
 
 // inquirer.prompt([

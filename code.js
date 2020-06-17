@@ -1651,38 +1651,37 @@ we can chain .then and .catch together
 // document.querySelector("h1") - grabs css selectors
 
 //example of us assigning a const to the query selector
-const title = document.querySelector("h1");
-
-console.log(title);
+//const title = document.querySelector("h1");
+//console.log(title);
 
 // a node is one part of the document, basically anything in the html document is considered a node, even spaces.
 
 // we can also create elements
-const myDiv = document.createElement("div");
+//const myDiv = document.createElement("div");
 
 //if we want to add this div to the document body you need to append it to an exisiting node
 
-document.body.appendChild(myDiv); // this would append the div to the end of the body
+//document.body.appendChild(myDiv); // this would append the div to the end of the body
 
 //example of us create an LI element and appending it
 // note that our list is a ul that we have selected
-const list = document.querySelector("ul");
+//const list = document.querySelector("ul");
 
-const myLI = document.createElement("li");
-myLI.innerHTML = "Appended LI";
+//const myLI = document.createElement("li");
+//myLI.innerHTML = "Appended LI";
 
-list.appendChild(myLI);
+//list.appendChild(myLI);
 
 //Mike recomments using query selectors
 
 // can be used to grab multiple elements
 //returns a html collection object, even though it looks like am array
-const title = document.getElementsByClassName("odd");
+//const title = document.getElementsByClassName("odd");
 
 // can use querySelectorAll to find all the odd classes
-const oddListItems = document.querySelectorAll(".odd");
+//const oddListItems = document.querySelectorAll(".odd");
 
-console.log(Array.from(oddListItems));
+//console.log(Array.from(oddListItems));
 
 //////////////////////////////////////////
 
@@ -1735,3 +1734,123 @@ console.log(Array.from(oddListItems));
 // stored specifically to a browser and tab
 
 // cookies get sent with the GET request and local and session storage doesn't
+
+/////////////////////////////////////
+//      17.6.20
+//    NODE.js
+
+// node versions matter
+// dom manipulation doesn't work in node.js
+
+// running node.js on the server means it's not run on the browser
+// node.js is async
+
+// HTML can combine multiple js files together e.g using <script> tags
+
+// commonjs / requiredjs - a way to include external code in node.js through modules
+
+////////////////////////////////
+//below code exports an object, that can be used by other files
+/*module.exports = { 
+  name: "andy",
+  function
+}
+*/
+
+////////////////////////////////
+// place below code in the file that requires the module
+// const helpers = require("./filename"); //doesn't require .js at the end
+
+////////////////////////////////
+//    filesystem
+// filesystem is a node module that we have access to that isn't supported on browser
+
+// const fs = require("fs");
+// import fs from "fs";
+
+//below code creates a nodetext file (if doesn't exist) and appends "hello world to it"
+// fs.appendFile("./nodetext", "hello world", () => {
+//   console.log("saved");
+// });
+
+// console.log("after append file");
+
+//we can also run methods sync or async
+// fs.appendFileSync("./nodetext", "hello world", () => {
+//   console.log("saved");
+// });
+
+///////////////////////////////////
+
+//      NPM - node package manager
+
+//    starting a npm project
+// start in it's own folder
+//    npm init
+//   name your package
+//  entry point : the file that gets run usually (index.js)
+
+//    package.json basically like gemfile in ruby, manages dependencies
+
+///////////////////////////
+//    SCRIPTS IN package.json
+
+//    we can also write scripts in package.json, to interact with the app, chuck these in the scripts section of the package.json
+//    "start": "node index.js" // creating a start script
+// npm run start // would run the script
+
+////////////////////////
+//      IMPORTING into a npm project
+
+// npm install packagename e.g npm install lodash
+
+// package-lock.json - specifies exact version of libraries, also includes integrity files
+// Mike says don't worry about the package-lock.json file
+
+// node modules - holds all the files for the libraries, don't worry about it, you don't upload node modules because it's such a big file. You can even delete the node modules folder and type npm install and it'll download all the dependencies required that are defined in package.json
+
+// use npm run start / npm start  - instead of node index.js
+
+//requiring a module
+// const lodash = require("lodash"); //don't need to set a path since, I think it checked your node_modules
+
+// console.log(lodash);
+
+///////////////////////////
+
+//    SEMANTIC VERSIONING
+
+/*
+1.0.0 - new product - First release
+1.0.1 - patch release- backwards compat bug fix 
+1.1.0 - minor release - backwards compat new features
+2.0.0 - major release- changes that break backward compat  
+ */
+
+//https://docs.npmjs.com/about-semantic-versioning
+
+// ^ caret - gives you most up to date backwards compat package e.g "lodash": "^4.17.15"
+
+/////////////////////////
+
+//    devDependencies - basically the same as dependencies
+//    devDependencies - would be modules only required for the developer e.g testing modules, linters, e.g eslint, prettier, jest
+// dependencies - things required for the app
+// npm install inquirer --save-dev
+
+/////////////////////////////
+
+//    GETTING USER INPUT FROM NODE
+
+// use requirer module
+// const inquirer = require("inquirer")
+
+// inquirer.prompt([
+//   {
+//     type: "input",
+//     name: "color",
+//     message: "What's your favorite color",
+//   }
+// ])
+
+//inquirer is promise based, so you can use async function and await

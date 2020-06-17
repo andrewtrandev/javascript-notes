@@ -19,29 +19,41 @@ In the HTML head:
 Add a style tag that sets a rule for .list-item to make the colour red.
 */
 
-console.log("hello");
-document.body.style.font = "20px Arial, sans-serif"; //font size and font family are required
-console.log(document.body);
+//////////////////////////
 
-const myNickname = document.querySelector("#nickname");
-const myFavorites = document.querySelector("#favorites");
-const myHometown = document.querySelector("#hometown");
+//     CHANGE FONT STYLE AND FONT FAMILY
+// console.log("hello");
+// document.body.style.font = "20px Arial, sans-serif"; //font size and font family are required
+// console.log(document.body);
+
+//////////////////////////
+
+//    WRITING IN SPANS
+
+// const myNickname = document.querySelector("#nickname");
+// const myFavorites = document.querySelector("#favorites");
+// const myHometown = document.querySelector("#hometown");
 
 // console.log(myNickname);
 // console.log(myFavorites);
 // console.log(myHometown);
 
-myNickname.innerHTML = "Andy";
-myFavorites.innerHTML = "Dog walks, Chicken";
-myHometown.innerHTML = "Erko";
+// myNickname.innerHTML = "Andy";
+// myFavorites.innerHTML = "Dog walks, Chicken";
+// myHometown.innerHTML = "Erko";
 
-let myLis = document.getElementsByTagName("li"); // get all li elements, could be more accurate
-myLis = Array.from(myLis); //convert htmlColection into array
-console.log(myLis);
+///////////////////////////////////////////
 
-myLis.forEach((li) => {
-  li.className = "list-item";
-});
+//    Adding the class list-item to each li
+// tools =  getElementsByTagName, Array.from, forEach
+
+// let myLis = document.getElementsByTagName("li"); // get all li elements, could be more accurate
+// myLis = Array.from(myLis); //convert htmlColection into array
+// console.log(myLis);
+
+// myLis.forEach((li) => {
+//   li.className = "list-item";
+// });
 
 /*function error probably cause I'm trying to iterate over a htmlcollection? not sure
 https://stackoverflow.com/questions/222841/most-efficient-way-to-convert-an-htmlcollection-to-an-array
@@ -61,18 +73,23 @@ list.forEach(li => {
 })
 */
 
-const myHeader = document.querySelector("h1");
-console.log(myHeader);
+//////////////////////////////////////////
 
-const myImg = document.createElement("IMG");
-myImg.src =
-  "https://wretchedanddivine.files.wordpress.com/2018/09/noface1.png?w=640";
-// myImg;
-console.log(myImg);
+//      ADDING IMAGE TO THE BODY
+// const myHeader = document.querySelector("h1");
+// console.log(myHeader);
 
-myHeader.appendChild(myImg);
+// const myImg = document.createElement("IMG");
+// myImg.src =
+//   "https://wretchedanddivine.files.wordpress.com/2018/09/noface1.png?w=640";
+// // myImg;
+// console.log(myImg);
 
-/* Vinny way
+// myHeader.appendChild(myImg);
+
+/* 
+Vinny way - for creating image
+
 const image = document.createElement("img");
 image.setAttribute(
   "src","https://pbs.twimg.com/profile_images/893269493757100033/Nt-GxpeA_400x400.jpg"
@@ -80,3 +97,14 @@ image.setAttribute(
 
 document.body.appendChild(image)
 */
+
+/////////////////////////////////////
+
+//      BELOW CODE TO CREATE A STYLE TAG AND STYLE CLASS = LIST ITEMS WITH COLOR RED
+
+// let myStyle = document.createElement("style");
+// console.log(myStyle);
+
+// myStyle.innerHTML = ".list-item { color: red;}"; //not sure if best way to add a color for the list item
+// console.log(myStyle);
+// document.head.appendChild(myStyle); //can append to doc head or body

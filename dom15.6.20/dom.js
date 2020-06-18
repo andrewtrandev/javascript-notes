@@ -138,3 +138,9 @@ myContainer.addEventListener("click", (e) => {
 document.body.addEventListener("click", (e) => {
   console.log("body clicked");
 });
+
+//how to stop event bubbling
+//event.stopPropagation();
+
+//preventing the default action of an event e.g stopping a rightclick
+//event.preventDefault()

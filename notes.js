@@ -1855,3 +1855,43 @@ we can chain .then and .catch together
 // ])
 
 //inquirer is promise based, so you can use async function and await
+
+////////////////////////////////////////////////////////////////////////
+
+//      18.6.20 WEBPACK
+
+// Refer to importexport18.6.20 folder
+
+/////////////////////////////////////////////////
+
+// npm init -y // start npm project with default options
+// npm i lodash     // install lodash library
+// npm install --save-dev webpack
+// npm install --save-dev webpack-cli
+// ./node_modules/.bin/webpack code.js --mode=development
+
+// anytime you change the code you need to rebuild the webpack
+// avoid using require if you can
+// webpack is optimising the code for the browser/web
+
+// we can create a script in package.json that will keep watch on what gets changed and saved, and will rebuild the webpack
+
+// below code
+// "watch": "webpack code.js --watch --mode=development",
+// we can then use   npm run watch
+
+/////////////////////////////////////////////////
+
+// need multiple script tags to use multiple js files
+// ordering for js files also matters due to code dependencies
+
+//good practice to keep script tags as little as possible because browser has to make a get request for each one
+
+// webpack - javascript bundler
+// allows us to use node libraries on the browser
+
+////////////////////////////////////////////
+
+//  Build Pipeline
+
+// all the steps it takes to go from the code you write to the code that is executed, it may get bundled, minified.

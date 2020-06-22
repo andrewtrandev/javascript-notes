@@ -1895,3 +1895,158 @@ we can chain .then and .catch together
 //  Build Pipeline
 
 // all the steps it takes to go from the code you write to the code that is executed, it may get bundled, minified.
+
+/////////////////////////////////////////
+
+// 21.6.20    REACT - TicTacToe Intro
+
+//https://reactjs.org/tutorial/tutorial.html#inspecting-the-starter-code
+
+/*React is a declarative, efficient, flexible JavaScript library for building user interfaces. It lets you compose complex UIs from small and isolated pieces of code called "components"
+
+React has a few different kinds of components.justify
+
+React.Component 
+We use components to tell React what we want to see on the screen. When our data changes, React will efficient update and re-render our components
+*/
+
+// class ShoppingList extends React.Component {
+//   render() {
+//     return (
+//       <div className="shopping-list">
+//         <h1>Shopping List for {this.props.name}</h1>
+//         <ul>
+//           <li>Instagram</li>
+//           <li>WhatsApp</li>
+//           <li>Oculus</li>
+//         </ul>
+//       </div>
+//     );
+//   }
+// }
+
+/* Here the ShoppingList is a React component class, or React component type. A component takes in parameters, called props(properties) and returns a hierarchy of views to display via the render method.
+
+Render returns a react element, which is a light-weight description of what to render.justify
+
+React develops use "JSX" to make these structures easier to write.
+
+JSX allows you to use JavaScript within the braces. Each React element is a JavaScript object that you can store in a variable or pass around in your program. 
+
+The ShoppingList component above only renders built-in DOM components like <div /> and <li />. But you can compose and render custom React components too. We can now refer to the whole shopping list by writing <ShoppingList />. Each React component is encapsulated and can operate independently*/
+
+/* You can properties from a Parent to a Child component.
+
+Use arrow function syntax for event handlers
+
+Below 2 code snippets do the same thing, send an alert when a square is clicked*/
+
+// class Square extends React.Component {
+//   render() {
+//     return (
+//       <button
+//         className="square"
+//         onClick={function () {
+//           alert("click");
+//         }}
+//       >
+//         {this.props.value}
+//       </button>
+//     );
+//   }
+// }
+
+// class Square extends React.Component {
+//   render() {
+//     return (
+//       <button className="square" onClick={() => alert("click")}>
+//         {this.props.value}
+//       </button>
+//     );
+//   }
+// }
+
+/* We can have components "remember" things by using state. 
+We do this by setting this.state in the constructor of a component. this.state should be considered private to a React component that it's defined in.
+*/
+
+//////////////////////////////////////////////
+
+//    REACT CONCEPTS
+
+///////////////////////////
+
+//    JSX
+
+// JSX produces React elements and can act as a visual aid when working with UI inside the JS code.
+
+// const element = <h1>Hello, world!</h1>;
+// Above is an example of JSX, note the semi-colon after the tags
+
+/////////////////////////////////////
+
+//    EMBEDDING EXPRESSIONS IN JSX
+
+// const name = 'Josh Perez';
+// const element = <h1>Hello, {name}</h1>;
+
+// ReactDOM.render(
+//   element,
+//   document.getElementById('root')
+// );
+
+/*
+can put any valid JS expression in the curly braces.
+recommended to split JSX over multiple lines for readability. Also wrapping in parentheses to avoid automatic semicolon insertion
+use camel case
+*/
+
+// const element = <img src={user.avatarUrl} />;
+// for the above code, if the tag is empty, we can close it immediately with />
+
+////////////////////////////////////
+//JSX PREVENTS INJECTION ATTACKS
+
+// const title = response.potentiallyMaliciousInput;
+// // This is safe:
+// const element = <h1>{title}</h1>;
+
+// By default, React DOM escapes any values embedded in JSX before rendering them. Thus you can never inject anything that's not explicity written in your application. Everything is converted to a string before being rendered.
+
+
+///////////////////////////////////
+
+//    REACT 22.6.20
+
+// React is modular, and component based, components are parts of your application.
+// allows you to combine HTML and javascript into components that get rendered by React
+
+// React:
+// A JS library to build user interfaces
+// Used to build re-ussable components (HTML elements)
+// The view layer of an MVC application
+
+// React DOM - rendering onto the DOM
+// React Active - renders content onto a mobile device
+
+
+///////////////////////////////////
+// BOOTSTRAPPING A REACT APP
+// create-react-app myapp
+// delete src folder
+// touch index.js
+// import React fromt 'react'
+// import ReactDom from 'react-dom'
+
+// gives us a .gitignore file
+// yarn/npm basically the same
+
+// cd into the folder
+// npm start
+
+// automatically boots your app on localhost:3000 and also gives you hot reloading which is basically like live server.
+// also runs it on your local network so that your phone can access it
+
+// npm run build - takes all your code and build it (webpack, minify, babel etc) and puts it in the public folder. 
+
+// people would usually take the whole public folder and host that

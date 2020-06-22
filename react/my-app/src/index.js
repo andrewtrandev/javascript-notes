@@ -1,4 +1,4 @@
-// https://reactjs.org/tutorial/tutorial.htmlnpm start
+// https://reactjs.org/tutorial/tutorial.html
 
 import React from "react";
 import ReactDOM from "react-dom";

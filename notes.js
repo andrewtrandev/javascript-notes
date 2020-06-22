@@ -1978,10 +1978,16 @@ We do this by setting this.state in the constructor of a component. this.state s
 
 //    JSX
 
+
+// Javacsript + XML
+// JSX has to be transpiled to code that can work in JS using Babel
 // JSX produces React elements and can act as a visual aid when working with UI inside the JS code.
 
-// const element = <h1>Hello, world!</h1>;
+// const element = <h1>Hello, world!</h1>
 // Above is an example of JSX, note the semi-colon after the tags
+
+// Babel transpiles the above code to 
+// React.createElement("h1", null, "Hello, World!");
 
 /////////////////////////////////////
 
@@ -2050,3 +2056,54 @@ use camel case
 // npm run build - takes all your code and build it (webpack, minify, babel etc) and puts it in the public folder. 
 
 // people would usually take the whole public folder and host that
+
+// React renders the index.html in the public folder
+
+////////////////////////////////
+
+// functional components - simplest
+
+// const Greeting = () => {
+//   return <h1>Hello! World</h1>
+// }
+
+// ReactDOM.render(
+//   <Greeting />,
+//   document.getElementById("root")
+// )
+
+//example of us creating a Greeting component, capital for the function is convention
+// components can have value and state
+
+// const Greeting = () => {
+//   return (
+//     <div>
+//   <h1>Hello! World</h1>
+//   <p>I am a paragraph</p>
+//   </div>
+//   )
+// }
+
+// in above code
+// multiple elements need to be wrapped in a div or another component, or they won't render, gives you a parsing error. These elements will be nested in a div
+
+// const Greeting = () => {
+//   return (
+//     <>
+//   <h1>Hello! World</h1>
+//   <p>I am a paragraph</p>
+//   </>
+//   )
+// }
+
+// in above code
+
+// we can also wrap elements in a fragment, which would put the elements right under the root
+// https://reactjs.org/docs/fragments.html
+
+// ReactDOM.render is the function that renders our JSX
+
+// You want to put components in their own file and import and export them
+
+// The idea is you want your code to be as reusable and readable of your website, so if you're going to reuse a component of have a large component chuck it in it's own file?
+

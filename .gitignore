@@ -1,3 +1,4 @@
 importexport18.6.20/node_modules
 # node_modules also works
 # https://www.pluralsight.com/guides/how-to-use-gitignore-file
+node_modules

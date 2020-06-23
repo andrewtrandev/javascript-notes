@@ -2107,3 +2107,263 @@ use camel case
 
 // The idea is you want your code to be as reusable and readable of your website, so if you're going to reuse a component of have a large component chuck it in it's own file?
 
+
+///////////////////////////////////////
+
+//    23.6.20     JSX DEEPER DIVE
+
+// NPM vs NPX 
+
+// node package manager vs 
+
+//npx allows you to run scripts in the CLI without having to put it in the scripts section in package.json
+
+
+//we can interpolate javascript values within curly braces
+// we can display booleans using .toString()
+
+const App = () => {
+
+  const num1 = 9
+  const num2 = 33
+
+  return (
+     <>
+      {num1} + {num2} = <strong>{num1 + num2}</strong>
+     </>
+  )
+}
+//above is example of us interpolating data
+
+const App = () => {
+  const book = {
+      title: "HP",
+      author: "JK"
+  }
+  return (
+     <>
+      <h1>{book.title}</h1>
+      <h2>By {book.author}</h2>
+     </>
+  )
+}
+// above, we can't render objects but we can if we JSON.stringify. But we would usually get the values because it looks better
+
+
+const App = () => {
+  const luckyNums = [4, 8, 15, 16, 23, 42]
+  return (
+     <>
+      <p>
+          {luckyNums}
+      </p>
+      
+     </>
+  )
+}
+
+// arrays get coerced 
+
+const App = () => {
+  const luckyNums = [4, 8, 15, 16, 23, 4, 55]
+  return (
+     <>
+      <ul>
+          {luckyNums.map(luckyNum => {
+              return <li>{luckyNum}</li>
+          })}
+      </ul>
+      {/* above is how you would map an array to list items */}
+     </>
+  )
+}
+
+////////////////////////////////////////////
+//    CONDITIONAL RENDERING
+
+
+// below code checks to see if data is loading if not it'll display the data, if it is, it'll display Loading...
+const App = () => {
+
+  let isLoadingData = false
+  let data = "Mike"
+
+  return (
+     <>
+      {isLoadingData ? <p>Loading...</p> : <h1>{data}</h1>}
+    
+     </>
+  )
+}
+///////////////////////////////////////
+//    PASSING IN VALUES
+
+const App = () => {
+
+  const title = "Hello World"
+  const classes = "header colored"
+  return (
+     <>
+      <h1 className={classes} >{title}</h1>
+     </>
+  )
+}
+
+////////////////////////////////////////
+//    PASSING IN STYLE OBJECTS AND OTHER OBJECTS
+
+const App = () => {
+
+  const title = "Hello World"
+  
+  const styles = {
+      color: "green",
+      fontSize: "100px",
+  }
+
+  const myClassName = "header colors green"
+
+  return (
+     <>
+      <h1 style={styles} className={myClassName} >{title}</h1>
+     </>
+  )
+}
+
+//document.body.style can show us what styles we can apply
+
+//////////////////////////////
+
+// PROPS
+
+// basically parameters/arguments that we pass into React components
+// similar to args in functions
+
+// IN OUR index.js FILE
+
+import React from 'react'
+import ReactDOM from 'react-dom'
+import App from './App'
+
+ReactDOM.render(
+    <App />,
+    document.getElementById("root")
+)
+
+// IN OUR APP.JS FILE
+import React from 'react'
+import Book from './Book'
+
+const App = () => {
+    return (
+       <>
+            <Book
+                title="Harry Potter"
+                author="JK Rowling"
+            />
+            <Book
+                title="The DaVinci Code"
+                author="Dan Brown"
+            />
+            <Book
+                title="Lord of the Rings"
+                author="JRR Tolkien"
+            />
+       </>
+    )
+}
+
+export default App
+
+
+//    IN OUR BOOK COMPONENT FILE
+
+import React from 'react'
+
+const Book = (props) => {
+    console.log(props)
+    return (
+        <div className="book">
+            <h2>{props.title}</h2>
+            <p>{props.author}</p>
+       </div>
+    )
+}
+
+export default Book
+
+// IN FUNCTIONAL COMPONENTS, you use props. and in class components you use this.
+
+// Destructuring so you don't need to use props
+//https://www.jsdiaries.com/destructuring-in-reactjs-why-use-it/
+
+import React from 'react'
+
+const Book = ({title, author}) => {
+    return (
+        <div className="book">
+            <h2>{title}</h2>
+            <p>{author}</p>
+       </div>
+    )
+}
+
+export default Book
+
+// MAPPING AN ARRAY 
+// you may also need a key that React will use in the backend, key needs to be unique
+
+const App = () => {
+    
+  const books = [
+      {
+          title: "Harry Potter",
+          author: "JK Rowling"
+      },
+      {
+          title: "The DaVinci Code",
+          author: "Dan Brown"
+      },
+      {
+          title: "Lord of the Rings",
+          author: "Tolkien"
+      }
+  ]
+
+  return (
+     <>
+      {books.map(book => {
+        return <Book key={book.title} title={book.title} author={book.author}/>
+      })}
+     </>
+  )
+}
+
+
+//////////////////////////
+
+// PROP DRILLING or PASSING PROPS DOWN LEVELS
+
+import React from 'react'
+import Title from './Title'
+
+const Book = ({title, author}) => {
+    return (
+        <div className="book">
+            <Title title={title}/>
+            <p>{author}</p>
+       </div>
+    )
+}
+
+export default Book
+
+// In Title.js
+
+import React from 'react'
+
+const Title = ({title}) => {
+    return (<h2>{title}</h2>)
+}
+
+export default Title

@@ -2122,113 +2122,117 @@ use camel case
 //we can interpolate javascript values within curly braces
 // we can display booleans using .toString()
 
-const App = () => {
+// const App = () => {
 
-  const num1 = 9
-  const num2 = 33
+//   const num1 = 9
+//   const num2 = 33
 
-  return (
-     <>
-      {num1} + {num2} = <strong>{num1 + num2}</strong>
-     </>
-  )
-}
+//   return (
+//      <>
+//       {num1} + {num2} = <strong>{num1 + num2}</strong>
+//      </>
+//   )
+// }
 //above is example of us interpolating data
 
-const App = () => {
-  const book = {
-      title: "HP",
-      author: "JK"
-  }
-  return (
-     <>
-      <h1>{book.title}</h1>
-      <h2>By {book.author}</h2>
-     </>
-  )
-}
+///////////////////////////////////////
+
+// const App = () => {
+//   const book = {
+//       title: "HP",
+//       author: "JK"
+//   }
+//   return (
+//      <>
+//       <h1>{book.title}</h1>
+//       <h2>By {book.author}</h2>
+//      </>
+//   )
+// }
+
 // above, we can't render objects but we can if we JSON.stringify. But we would usually get the values because it looks better
 
+////////////////////////////////////////////////
 
-const App = () => {
-  const luckyNums = [4, 8, 15, 16, 23, 42]
-  return (
-     <>
-      <p>
-          {luckyNums}
-      </p>
+// const App = () => {
+//   const luckyNums = [4, 8, 15, 16, 23, 42]
+//   return (
+//      <>
+//       <p>
+//           {luckyNums}
+//       </p>
       
-     </>
-  )
-}
+//      </>
+//   )
+// }
 
-// arrays get coerced 
+// arrays get coerced into a string with no separators, have to map it
 
-const App = () => {
-  const luckyNums = [4, 8, 15, 16, 23, 4, 55]
-  return (
-     <>
-      <ul>
-          {luckyNums.map(luckyNum => {
-              return <li>{luckyNum}</li>
-          })}
-      </ul>
-      {/* above is how you would map an array to list items */}
-     </>
-  )
-}
+// const App = () => {
+//   const luckyNums = [4, 8, 15, 16, 23, 4, 55]
+//   return (
+//      <>
+//       <ul>
+//           {luckyNums.map(luckyNum => {
+//               return <li>{luckyNum}</li>
+//           })}
+//       </ul>
+//       {/* above is how you would map an array to list items */}
+//      </>
+//   )
+// }
 
 ////////////////////////////////////////////
 //    CONDITIONAL RENDERING
 
 
 // below code checks to see if data is loading if not it'll display the data, if it is, it'll display Loading...
-const App = () => {
+// const App = () => {
 
-  let isLoadingData = false
-  let data = "Mike"
+//   let isLoadingData = false
+//   let data = "Mike"
 
-  return (
-     <>
-      {isLoadingData ? <p>Loading...</p> : <h1>{data}</h1>}
+//   return (
+//      <>
+//       {isLoadingData ? <p>Loading...</p> : <h1>{data}</h1>}
     
-     </>
-  )
-}
+//      </>
+//   )
+// }
 ///////////////////////////////////////
 //    PASSING IN VALUES
 
-const App = () => {
+// const App = () => {
 
-  const title = "Hello World"
-  const classes = "header colored"
-  return (
-     <>
-      <h1 className={classes} >{title}</h1>
-     </>
-  )
-}
+//   const title = "Hello World"
+//   const classes = "header colored"
+//   return (
+//      <>
+//       <h1 className={classes} >{title}</h1>
+//      </>
+//   )
+// }
 
 ////////////////////////////////////////
 //    PASSING IN STYLE OBJECTS AND OTHER OBJECTS
 
-const App = () => {
+// const App = () => {
 
-  const title = "Hello World"
+//   const title = "Hello World"
   
-  const styles = {
-      color: "green",
-      fontSize: "100px",
-  }
+//   const styles = {
+//       color: "green",
+//       fontSize: "100px",
+//   }
 
-  const myClassName = "header colors green"
+//   const myClassName = "header colors green"
 
-  return (
-     <>
-      <h1 style={styles} className={myClassName} >{title}</h1>
-     </>
-  )
-}
+//   return (
+//      <>
+//       <h1 style={styles} className={myClassName} >{title}</h1>
+//      </>
+//   )
+// }
 
 //document.body.style can show us what styles we can apply
 
@@ -2239,131 +2243,247 @@ const App = () => {
 // basically parameters/arguments that we pass into React components
 // similar to args in functions
 
+/////////////////////////////
+
 // IN OUR index.js FILE
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import App from './App'
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import App from './App'
 
-ReactDOM.render(
-    <App />,
-    document.getElementById("root")
-)
+// ReactDOM.render(
+//     <App />,
+//     document.getElementById("root")
+// )
 
+/////////////////////////////////
 // IN OUR APP.JS FILE
-import React from 'react'
-import Book from './Book'
 
-const App = () => {
-    return (
-       <>
-            <Book
-                title="Harry Potter"
-                author="JK Rowling"
-            />
-            <Book
-                title="The DaVinci Code"
-                author="Dan Brown"
-            />
-            <Book
-                title="Lord of the Rings"
-                author="JRR Tolkien"
-            />
-       </>
-    )
-}
+// import React from 'react'
+// import Book from './Book'
 
-export default App
+// const App = () => {
+//     return (
+//        <>
+//             <Book
+//                 title="Harry Potter"
+//                 author="JK Rowling"
+//             />
+//             <Book
+//                 title="The DaVinci Code"
+//                 author="Dan Brown"
+//             />
+//             <Book
+//                 title="Lord of the Rings"
+//                 author="JRR Tolkien"
+//             />
+//        </>
+//     )
+// }
+// export default App
 
+//////////////////////////////
 
 //    IN OUR BOOK COMPONENT FILE
 
-import React from 'react'
+// import React from 'react'
 
-const Book = (props) => {
-    console.log(props)
-    return (
-        <div className="book">
-            <h2>{props.title}</h2>
-            <p>{props.author}</p>
-       </div>
-    )
-}
+// const Book = (props) => {
+//     console.log(props)
+//     return (
+//         <div className="book">
+//             <h2>{props.title}</h2>
+//             <p>{props.author}</p>
+//        </div>
+//     )
+// }
 
-export default Book
+// export default Book
+
+//////////////////////////////////////////////////
 
 // IN FUNCTIONAL COMPONENTS, you use props. and in class components you use this.
 
 // Destructuring so you don't need to use props
 //https://www.jsdiaries.com/destructuring-in-reactjs-why-use-it/
 
-import React from 'react'
+// import React from 'react'
 
-const Book = ({title, author}) => {
-    return (
-        <div className="book">
-            <h2>{title}</h2>
-            <p>{author}</p>
-       </div>
-    )
-}
+// const Book = ({title, author}) => {
+//     return (
+//         <div className="book">
+//             <h2>{title}</h2>
+//             <p>{author}</p>
+//        </div>
+//     )
+// }
 
-export default Book
+// export default Book
 
+/////////////////////////////////////////////////////////////////
 // MAPPING AN ARRAY 
 // you may also need a key that React will use in the backend, key needs to be unique
 
-const App = () => {
+// const App = () => {
     
-  const books = [
-      {
-          title: "Harry Potter",
-          author: "JK Rowling"
-      },
-      {
-          title: "The DaVinci Code",
-          author: "Dan Brown"
-      },
-      {
-          title: "Lord of the Rings",
-          author: "Tolkien"
-      }
-  ]
+//   const books = [
+//       {
+//           title: "Harry Potter",
+//           author: "JK Rowling"
+//       },
+//       {
+//           title: "The DaVinci Code",
+//           author: "Dan Brown"
+//       },
+//       {
+//           title: "Lord of the Rings",
+//           author: "Tolkien"
+//       }
+//   ]
 
-  return (
-     <>
-      {books.map(book => {
-        return <Book key={book.title} title={book.title} author={book.author}/>
-      })}
-     </>
-  )
-}
+//   return (
+//      <>
+//       {books.map(book => {
+//         return <Book key={book.title} title={book.title} author={book.author}/>
+//       })}
+//      </>
+//   )
+// }
 
 
 //////////////////////////
 
 // PROP DRILLING or PASSING PROPS DOWN LEVELS
 
-import React from 'react'
-import Title from './Title'
+// import React from 'react'
+// import Title from './Title'
 
-const Book = ({title, author}) => {
-    return (
-        <div className="book">
-            <Title title={title}/>
-            <p>{author}</p>
-       </div>
-    )
-}
+// const Book = ({title, author}) => {
+//     return (
+//         <div className="book">
+//             <Title title={title}/>
+//             <p>{author}</p>
+//        </div>
+//     )
+// }
 
-export default Book
+// export default Book
 
 // In Title.js
 
-import React from 'react'
+// import React from 'react'
 
-const Title = ({title}) => {
-    return (<h2>{title}</h2>)
-}
+// const Title = ({title}) => {
+//     return (<h2>{title}</h2>)
+// }
 
-export default Title
+// export default Title
+
+
+//////////////////////////////////////
+
+//    24.6.20   CLASS COMPONENTS
+
+// REFER TO REACT > CLASSINTRO FOLDER
+
+// why use class components? easy way to keep track of state, any values that may need to be stored and updated regarding your component
+
+// boiler plate for class component
+
+// React.component gives us everything we need
+
+////////////////////////////////////////////
+// IN COUNTER.JS
+// import React from 'react'
+
+
+// React.component gives us everything we need
+
+// class Counter extends React.Component {
+//     constructor(props){
+//         super(props)
+//         this.state = {
+//             count: 0
+//         }
+//     }
+
+//     //anytime you're calling set state, needs to be an arrow function
+//     //setState tells React to re-render
+//     //can have anything as state
+
+//     componentDidMount(){
+//         console.log("Mounted")
+//     }
+
+//     componentDidUpdate(){
+//         console.log("updated")
+//     }
+
+//     incrementCount = () => {
+//         this.setState(
+//             {count: this.state.count + 1}
+//         )
+//     }
+
+//     decrementCount = () => {
+//         this.setState(
+//             {count: this.state.count - 1}
+//         )
+//     }
+
+//     render(){
+//         console.log("Rendered", this.state)
+//         return (
+//             <div>
+//                 <button onClick={this.decrementCount} >
+//                     -1
+//                 </button>   
+//                 {this.state.count}
+//                 <button onClick={this.incrementCount} >
+//                     +1
+//                 </button>
+//             </div>
+//         )
+//     }
+// }
+
+
+// export default Counter
+
+// // onClick - event listener
+// // state - this.state
+
+////////////////////////////////
+// IN OUR APP.JS file
+
+// import React from 'react'
+// import Counter from './Counter'
+
+// const App = () => {
+//     return (
+//        <>
+//         <Counter />
+//        </>
+//     )
+// }
+
+// export default App
+
+
+///////////////////////////////////
+
+// LIFE CYCLE METHODS
+
+// allows you to run code when something happens in your component's lifecycle
+
+// componentDidMount(){
+//   console.log("Mounted")
+// }
+
+// mounting is when the component first gets attached to the DOM, different to updating a component
+
+// componentDidUpdate(){
+//   console.log("Updated")
+// }
+
+// run code when a component gets updated

@@ -1,17 +1,12 @@
 import React from 'react'
+import PokeStat from './Pokestat'
 
 const PokeStats = ({attack, defense, strength}) => {
     return (
-    <div className="poke-stats">
-        <div className="stat">
-            <strong>attack</strong>: {attack}
-        </div>
-        <div className="stat">
-            <strong>defense</strong>: {defense}
-        </div>
-        <div className="stat">
-            <strong>strength</strong>: {strength}
-        </div>
+        <div className="poke-stats">
+        <PokeStat name="Attack" value={attack} />
+        <PokeStat name="Defense" value={defense} />
+        <PokeStat name="Strength" value={strength} />
     </div>
     )
 }

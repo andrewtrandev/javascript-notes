@@ -3,7 +3,7 @@ import Poke from './Poke'
 
 const App = () => {
     return (
-    <div class="poke-cards">
+    <div className="poke-cards">
         <Poke   
             image = "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
             types = "grass, poison"

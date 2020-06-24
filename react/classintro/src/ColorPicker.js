@@ -9,9 +9,10 @@ class ColorPicker extends React.Component {
         }
     }
 
-    changeTextColor = (color) => {
-        this.setState({textColor:color})
-    }
+    // // METHOD 2
+    // changeTextColor = (color) => {
+    //     this.setState({textColor:color})
+    // }
 
     render(){
         const textStyle = {
@@ -36,11 +37,11 @@ class ColorPicker extends React.Component {
 
                         {/* Method 2 */}
 
-                    <li onClick={() => this.changeTextColor("red")}>Red</li>
+                    {/* <li onClick={() => this.changeTextColor("red")}>Red</li>
                     <li onClick={() => this.changeTextColor("blue")}>Blue</li>
-                    <li onClick={() => this.changeTextColor("green")}>Green</li>
+                    <li onClick={() => this.changeTextColor("green")}>Green</li> */}
             </ul>
-            <p style={textStyle }>The colored text</p>
+            <p style={textStyle}>The colored text</p>
             </div>
         )
         

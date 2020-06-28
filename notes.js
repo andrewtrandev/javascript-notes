@@ -2392,6 +2392,8 @@ use camel case
 
 // React.component gives us everything we need
 
+// React re-renders components when setState is called
+
 ////////////////////////////////////////////
 // IN COUNTER.JS
 // import React from 'react'
@@ -2487,3 +2489,165 @@ use camel case
 // }
 
 // run code when a component gets updated
+
+///////////////////////////////////////////
+
+//    25.6.20 CONTROLLED AND UNCONTROLLED
+
+/*
+import React from 'react'
+class Search extends React.Component {
+    render(){
+        return (
+        <>
+          <input type="text" value={this.props.initialValue} />  
+        </>
+        // if you put a value here, you can't change it
+        )
+    }
+}
+
+export default Search
+*/
+
+//above code doesn't allow you to change the value
+
+/////////////////////////////////////////
+
+// we can access the event that onChange returns
+// it'll return a synthetic event
+// useful things to view event.target, event.target.value
+
+// render(){
+//   return (
+//   <>
+//     <input type="text" value={this.state.searchValue}
+//     onChange={(event)=> {
+//         console.log(event)
+//     }} />  
+//   </>
+//   // if you put a value here, you can't change it
+//   )
+// }
+
+//////////////////////////////////////////
+
+// can control our components so that when someone types in hello, it changes it to world
+// import React from 'react'
+
+// class Search extends React.Component {
+
+//     state = {
+//         searchValue: "Hello",
+//     }
+
+//     handleSearchValueChange = (event) => {
+//         if(event.target.value === "hello"){
+//             this.setState({searchValue: "world"})
+//         } else {
+//             this.setState({searchValue: event.target.value}) 
+//         }
+//     }
+
+//     render(){
+//         return (
+//         <>
+//           <input
+//             type="text"
+//             value={this.state.searchValue}
+//             onChange={this.handleSearchValueChange}
+//           /> 
+//         </>
+//         )
+//     }
+// }
+
+// export default Search
+
+/////////////////////////////////////
+
+// SMART VS DUMB COMPONENTS
+
+// // https://www.digitalocean.com/community/tutorials/react-smart-dumb-components#:~:text=Smart%20components%20are%20app%20level,focus%20solely%20on%20the%20UI.
+
+//smart components, rendering other components and manage data
+//dumb components focus solely on UI
+// class SearchController extends React.Component {
+
+//   state = {
+//       searchValue: ""
+//   }
+
+//   render(){
+//       return (
+//           <Search 
+//               searchValue={this.state.searchValue}
+//               onSearchValueChange={(event) => {
+//                   this.setState({searchValue: event.target.value})
+//               }}
+//           />
+//       )
+//   }
+// }
+
+// export default SearchController
+
+
+/////////////////////////////////////////////
+// const  Search = (props) => {
+
+//   return (
+//   <>
+//     <input
+//       type="text"
+//       value={props.searchValue}
+//       onChange={props.onSearchValueChange}
+//     /> 
+//   </>
+//   )
+
+// }
+// dumb component
+// receives props, doesn't do any advanced changes
+
+/*Mike talks about trying to have as many dumb componenets as you can. Smart components sometimes referred to as controllers. 
+
+Less places where you have state, the better.
+*/
+
+////////////////////////////
+
+//    REFS
+
+// 95% of the time you won't need a ref
+// state and props will get you through
+
+// constructor(props){
+//   super(props)
+//   this.elementRef = React.createRef()
+// }
+
+// <div 
+//   id="my-div" 
+//   ref={this.elementRef}
+//   >I'm a div
+// </div>
+
+//////////////////////////////
+
+//    DEFAULT PROPS
+
+// import React from 'react'
+
+// const Button = (props) => {
+
+//     const {onSubmit, text = "Submit"} = props
+
+//     return (
+//         <button onClick={onSubmit}>
+//             {text}
+//         </button>
+//     )
+// }
+
+// export default Button

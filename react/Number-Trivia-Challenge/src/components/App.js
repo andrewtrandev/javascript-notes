@@ -9,15 +9,16 @@ class App extends React.Component {
     triviaData: ""
   }
 
-  onSearchSubmit = async () => {
+ onSearchSubmit = async () => {
     const response = await axios.get(`http://numbersapi.com/${this.state.number}/trivia`)  
     const data = response.data
     this.setState({triviaData: data})
   }
 
+  
   render() {
     console.log(this.state.number)
-
+    console.log(this.state.triviaData)
     return (
       <div className="ui container" style={{ marginTop: '10px' }}>
         <SearchBar 

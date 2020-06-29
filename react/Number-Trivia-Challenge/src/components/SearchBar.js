@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
                   this.props.onSearchValueChange(event.target.value)
                 }}
                 onKeyUp={(event) => {
-                  if(event.keycode === 13){
+                  if(event.keyCode === 13){
                       this.props.onEnter()
                   }
                 }}

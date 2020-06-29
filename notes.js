@@ -1978,7 +1978,6 @@ We do this by setting this.state in the constructor of a component. this.state s
 
 //    JSX
 
-
 // Javacsript + XML
 // JSX has to be transpiled to code that can work in JS using Babel
 // JSX produces React elements and can act as a visual aid when working with UI inside the JS code.
@@ -1986,7 +1985,7 @@ We do this by setting this.state in the constructor of a component. this.state s
 // const element = <h1>Hello, world!</h1>
 // Above is an example of JSX, note the semi-colon after the tags
 
-// Babel transpiles the above code to 
+// Babel transpiles the above code to
 // React.createElement("h1", null, "Hello, World!");
 
 /////////////////////////////////////
@@ -2019,7 +2018,6 @@ use camel case
 
 // By default, React DOM escapes any values embedded in JSX before rendering them. Thus you can never inject anything that's not explicity written in your application. Everything is converted to a string before being rendered.
 
-
 ///////////////////////////////////
 
 //    REACT 22.6.20
@@ -2034,7 +2032,6 @@ use camel case
 
 // React DOM - rendering onto the DOM
 // React Active - renders content onto a mobile device
-
 
 ///////////////////////////////////
 // BOOTSTRAPPING A REACT APP
@@ -2053,7 +2050,7 @@ use camel case
 // automatically boots your app on localhost:3000 and also gives you hot reloading which is basically like live server.
 // also runs it on your local network so that your phone can access it
 
-// npm run build - takes all your code and build it (webpack, minify, babel etc) and puts it in the public folder. 
+// npm run build - takes all your code and build it (webpack, minify, babel etc) and puts it in the public folder.
 
 // people would usually take the whole public folder and host that
 
@@ -2107,17 +2104,15 @@ use camel case
 
 // The idea is you want your code to be as reusable and readable of your website, so if you're going to reuse a component of have a large component chuck it in it's own file?
 
-
 ///////////////////////////////////////
 
 //    23.6.20     JSX DEEPER DIVE
 
-// NPM vs NPX 
+// NPM vs NPX
 
-// node package manager vs 
+// node package manager vs
 
 //npx allows you to run scripts in the CLI without having to put it in the scripts section in package.json
-
 
 //we can interpolate javascript values within curly braces
 // we can display booleans using .toString()
@@ -2161,7 +2156,7 @@ use camel case
 //       <p>
 //           {luckyNums}
 //       </p>
-      
+
 //      </>
 //   )
 // }
@@ -2185,7 +2180,6 @@ use camel case
 ////////////////////////////////////////////
 //    CONDITIONAL RENDERING
 
-
 // below code checks to see if data is loading if not it'll display the data, if it is, it'll display Loading...
 // const App = () => {
 
@@ -2195,7 +2189,7 @@ use camel case
 //   return (
 //      <>
 //       {isLoadingData ? <p>Loading...</p> : <h1>{data}</h1>}
-    
+
 //      </>
 //   )
 // }
@@ -2219,7 +2213,7 @@ use camel case
 // const App = () => {
 
 //   const title = "Hello World"
-  
+
 //   const styles = {
 //       color: "green",
 //       fontSize: "100px",
@@ -2321,11 +2315,11 @@ use camel case
 // export default Book
 
 /////////////////////////////////////////////////////////////////
-// MAPPING AN ARRAY 
+// MAPPING AN ARRAY
 // you may also need a key that React will use in the backend, key needs to be unique
 
 // const App = () => {
-    
+
 //   const books = [
 //       {
 //           title: "Harry Potter",
@@ -2349,7 +2343,6 @@ use camel case
 //      </>
 //   )
 // }
-
 
 //////////////////////////
 
@@ -2379,7 +2372,6 @@ use camel case
 
 // export default Title
 
-
 //////////////////////////////////////
 
 //    24.6.20   CLASS COMPONENTS
@@ -2397,7 +2389,6 @@ use camel case
 ////////////////////////////////////////////
 // IN COUNTER.JS
 // import React from 'react'
-
 
 // React.component gives us everything we need
 
@@ -2439,7 +2430,7 @@ use camel case
 //             <div>
 //                 <button onClick={this.decrementCount} >
 //                     -1
-//                 </button>   
+//                 </button>
 //                 {this.state.count}
 //                 <button onClick={this.incrementCount} >
 //                     +1
@@ -2448,7 +2439,6 @@ use camel case
 //         )
 //     }
 // }
-
 
 // export default Counter
 
@@ -2470,7 +2460,6 @@ use camel case
 // }
 
 // export default App
-
 
 ///////////////////////////////////
 
@@ -2524,7 +2513,7 @@ export default Search
 //     <input type="text" value={this.state.searchValue}
 //     onChange={(event)=> {
 //         console.log(event)
-//     }} />  
+//     }} />
 //   </>
 //   // if you put a value here, you can't change it
 //   )
@@ -2545,7 +2534,7 @@ export default Search
 //         if(event.target.value === "hello"){
 //             this.setState({searchValue: "world"})
 //         } else {
-//             this.setState({searchValue: event.target.value}) 
+//             this.setState({searchValue: event.target.value})
 //         }
 //     }
 
@@ -2556,7 +2545,7 @@ export default Search
 //             type="text"
 //             value={this.state.searchValue}
 //             onChange={this.handleSearchValueChange}
-//           /> 
+//           />
 //         </>
 //         )
 //     }
@@ -2580,7 +2569,7 @@ export default Search
 
 //   render(){
 //       return (
-//           <Search 
+//           <Search
 //               searchValue={this.state.searchValue}
 //               onSearchValueChange={(event) => {
 //                   this.setState({searchValue: event.target.value})
@@ -2592,7 +2581,6 @@ export default Search
 
 // export default SearchController
 
-
 /////////////////////////////////////////////
 // const  Search = (props) => {
 
@@ -2602,7 +2590,7 @@ export default Search
 //       type="text"
 //       value={props.searchValue}
 //       onChange={props.onSearchValueChange}
-//     /> 
+//     />
 //   </>
 //   )
 
@@ -2627,8 +2615,8 @@ Less places where you have state, the better.
 //   this.elementRef = React.createRef()
 // }
 
-// <div 
-//   id="my-div" 
+// <div
+//   id="my-div"
 //   ref={this.elementRef}
 //   >I'm a div
 // </div>
@@ -2651,3 +2639,102 @@ Less places where you have state, the better.
 // }
 
 // export default Button
+
+/////////////////////////////////////////////////////
+
+//    29.6.20   ROUTING
+
+// REFER TO REACT > ROUTES29.6.20 & TODOLIST29.6.20 & ROUTERCHAL29.6.20
+
+{
+  /* <button onClick={()=> this.setState({location: 'home'})}>Home</button>
+<button onClick={()=> this.setState({location: 'about'})}>About</button>
+<button onClick={()=> this.setState({location: 'contact'})}>Contact</button> */
+}
+
+// SPA - Single page apps
+
+// generally better to use an open-source library to create single page apps rather than trying to create it yourself
+
+
+//////////////////////////
+
+//     BROWSER ROUTER
+
+// import React, { Component } from "react";
+// import Home from "./Home";
+// import Contact from "./Contact";
+// import About from "./About";
+// import { BrowserRouter, Route } from "react-router-dom";
+
+// //browserrouter spec for browsers
+// class App extends Component {
+//   render() {
+//     return (
+//       <div>
+//         <BrowserRouter>
+//           <Route exact path="/" component={Home} />
+//           <Route exact path="/" render={props => <Home data="myData" />} />
+
+//           {/* exact is the same as exact={true} */}
+//           {/* without the exact keyword, it renders it out even if there is a partial match for the url */}
+//           <Route exact path="/contact" component={Contact} />
+//           <Route exact path="/contact/bugs" component={Contact} />
+//           <Route exact path="/about/:id" component={About} />
+//         </BrowserRouter>
+//       </div>
+//     );
+//   }
+// }
+
+// export default App;
+
+
+////////////////////////////////////////////////////
+
+//    PASSING QUERY PARAMETERS INTO URLS
+
+{/* <Route exact path="/" render={props => <Home data="myData" />} /> */}
+
+// https://spin.atomicobject.com/2019/10/01/a-quick-start-guide-to-query-strings-with-react-router/
+
+
+///////////////////////////////
+
+//  DYNAMIC ROUTES
+
+// for this route we can't access about/ , unless we also put in an id
+{/* <Route exact path="/about/:id" component={About} /> */}
+
+///////////////////////////
+
+//    LINKS VS ANCHOR TAGS
+
+//note that we have access to BrowserRouter, Route and Link by first installing router-react-dom by doing npm i router-react-dom and then importing it in, import {BrowserRouter, Route, Link} from 'react-router-dom'
+//  anchor tags refresh the whole html page, whilst links don't
+
+{/* <div>
+<BrowserRouter>
+  <Route exact path="/" component={Home} />
+  <Route exact path="/contact" component={Contact} />
+  <Route exact path="/about/:id" component={About} />
+  <Link to="/">
+    <button>Home</button>
+  </Link>
+  <Link to="/contact">
+    <button>Contact</button>
+  </Link>
+  <Link to="/about/3">
+    <button>About</button>
+  </Link>
+</BrowserRouter>
+
+<a href="/">Home</a>
+<a href="/about/3">About</a>
+<a href="/contact">Contact</a>
+</div> */}
+
+/*we use the route code to specify what the specified url will render. the component is what we'll render. Exact is the same as Exact = {true} and specifies how specific the url matching will work.*/
+
+///////////////////////////////////////////
+

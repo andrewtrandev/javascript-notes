@@ -2656,7 +2656,6 @@ Less places where you have state, the better.
 
 // generally better to use an open-source library to create single page apps rather than trying to create it yourself
 
-
 //////////////////////////
 
 //     BROWSER ROUTER
@@ -2689,22 +2688,24 @@ Less places where you have state, the better.
 
 // export default App;
 
-
 ////////////////////////////////////////////////////
 
 //    PASSING QUERY PARAMETERS INTO URLS
 
-{/* <Route exact path="/" render={props => <Home data="myData" />} /> */}
+{
+  /* <Route exact path="/" render={props => <Home data="myData" />} /> */
+}
 
 // https://spin.atomicobject.com/2019/10/01/a-quick-start-guide-to-query-strings-with-react-router/
-
 
 ///////////////////////////////
 
 //  DYNAMIC ROUTES
 
 // for this route we can't access about/ , unless we also put in an id
-{/* <Route exact path="/about/:id" component={About} /> */}
+{
+  /* <Route exact path="/about/:id" component={About} /> */
+}
 
 ///////////////////////////
 
@@ -2713,7 +2714,8 @@ Less places where you have state, the better.
 //note that we have access to BrowserRouter, Route and Link by first installing router-react-dom by doing npm i router-react-dom and then importing it in, import {BrowserRouter, Route, Link} from 'react-router-dom'
 //  anchor tags refresh the whole html page, whilst links don't
 
-{/* <div>
+{
+  /* <div>
 <BrowserRouter>
   <Route exact path="/" component={Home} />
   <Route exact path="/contact" component={Contact} />
@@ -2732,9 +2734,137 @@ Less places where you have state, the better.
 <a href="/">Home</a>
 <a href="/about/3">About</a>
 <a href="/contact">Contact</a>
-</div> */}
+</div> */
+}
 
 /*we use the route code to specify what the specified url will render. the component is what we'll render. Exact is the same as Exact = {true} and specifies how specific the url matching will work.*/
 
 ///////////////////////////////////////////
+
+// onChange event in React detects when the value of an input element changes
+
+// https://upmostly.com/tutorials/react-onchange-events-with-examples
+
+// an onChange event handler returns a synthetic event object which contains useful meta data. We can access the target input's value by accessing e.target.value
+
+// objects are not valid as react elements
+
+////////////////////////////////////////
+
+//      30.6.20   HOOKS
+
+// REFER TO REACT/HOOKS30.6.20    /BITCOIN30.6.20
+
+//below is an example of us converting class components into functional components that use hooks
+
+//////////////////////////////////////
+
+/*
+import React, { useState } from "react";
+
+class Counter extends React.Component {
+  state = {
+    count: 0,
+    inputValue: "",
+  };
+
+  render() {
+    return (
+      <div>
+        <button onClick={() => this.setState({ count: this.state.count + 1 })}>
+          +1
+        </button>
+        {this.state.count}
+
+        <input
+          type="text"
+          value={this.state.inputValue}
+          onChange={(e) => this.setState({ inputValue: e.target.value })}
+        />
+        {this.state.inputValue}
+      </div>
+    );
+  }
+}
+
+export const FuncCounter = () => {
+  const [count, setCount] = useState(0);
+  const [inputValue, setInputValue] = useState("");
+
+  return (
+    <div>
+      <button onClick={() => setCount(count + 1)}>+1</button>
+      {count}
+      <input
+        type="text"
+        value={inputValue}
+        onChange={(e) => setInputValue(e.target.value)}
+      />
+      {inputValue}
+    </div>
+  );
+};
+
+export default Counter;
+*/
+
+//////////////////////////////
+
+/*
+remember to import useState
+import React, {useState} from 'react'
+look up destructuring for hooks
+hooks allow us to write less code
+hooks can't be used in classes
+hooks don't allow merging, so if you have multiple states in one hook, it'll overwrite the ones you don't also set
+
+when converting class components to functional components that use hook, look for states to convert and props
+*/
+////////////////////////
+
+// import useEffect
+// can be used to replace componentDidMount and componentDidUpdate
+
+// boiler plate for componentDidMount
+//   useEffect(() => {
+
+//         }, [])
+
+// Without the array at the end it becomes componentDidUpdate
+// if you change the state within useEffect, without a second argument it'll loop forever.
+// If you passed in an array with the state, it'll only update when you change the state
+
+// useEffect(() => {
+//   console.log("count value changed");
+// }, [count]);
+
+//example of us updating when the count state is updated
+
+// don't need render() in function components, only in class components
+
+////////////////////////////////////////////
+
+//    1.7.20    useContext
+
+/* the issue we're trying to solve is passing props through multiple levels of components. for example we might have an App.js file that needs to pass a prop to a Card and then to a Button. In later projects we might have several levels of nesting of functions and constants.
+
+The idea of useContext is to create a context.js file and export common props that child components will need. We can then create a context for these using 
+
+const AppContext = React.createContext()
+export default AppContext;
+
+we can then import the relevant modules for context to work
+import { useContext } from 'react'
+import AppContext from './context'
+
+
+
+const value = useContext(MyContext);
+
+The argument to useContext must be the context object itself
+
+A component calling useContext will always re-render when the context value changes.
+
+You also need a Context.Provider
+*/
 

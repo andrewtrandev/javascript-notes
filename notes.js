@@ -2868,3 +2868,21 @@ A component calling useContext will always re-render when the context value chan
 You also need a Context.Provider
 */
 
+
+////////////////////////////////////////////
+
+//    3.7.20    
+
+/*
+useState
+
+functional and class components
+
+componentDidMount
+componentDidUpdate
+
+useEffect
+
+context api
+
+*/

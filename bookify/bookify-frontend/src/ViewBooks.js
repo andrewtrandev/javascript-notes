@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import {Link} from 'react-router-dom'
 import DeleteBook from './DeleteBook'
+import EditBook from './EditBook'
 /* how can we get books?
 we're running a rails backend server on port 4000, so we can use axios or fetch to link up to that and grab data from there 
 */
@@ -31,6 +32,9 @@ const ViewBooks = () => {
                     bookId = {book.id}
                     onDelete = {() => setBooks(books.filter( (b, i) => b.id !== book.id))}
                     />
+                    {/* <EditBook
+                        bookId = {book.id}
+                        onEdit = { () => } */}
                 </li>
             ))}
         </>

@@ -1,25 +1,28 @@
-import React from 'react'
-import ViewBooks from './ViewBooks'
-import ViewBook from './ViewBook'
-import {BrowserRouter, Route} from 'react-router-dom'
+import React from 'react';
+import ViewBooks from './ViewBooks';
+import ViewBook from './ViewBook';
+import { BrowserRouter, Route } from 'react-router-dom';
+import CreateBook from './CreateBook';
 
 const App = () => {
+  return (
+    <div>
+      <h1>Bookify</h1>
 
-    return (
-        <div>
-            <h1>Bookify</h1>
-            
+      <BrowserRouter>
+        <Route exact path='/' component={ViewBooks} />
+        <Route exact path='/new' component={CreateBook} />
+        <Route
+          exact
+          path='/:id'
+          render={(props) => <ViewBook bookId={props.match.params.id} />}
+        />
+      </BrowserRouter>
 
-
-            <BrowserRouter>
-                <Route exact path="/" component={ViewBooks} />
-                <Route exact path="/:id" render={props => <ViewBook bookId = {props.match.params.id}/>} />
-            </BrowserRouter>
-       
-            {/* <ViewBooks />
+      {/* <ViewBooks />
             <ViewBook bookId = "2" /> */}
-        </div>
-    )
-}
+    </div>
+  );
+};
 
-export default App
+export default App;

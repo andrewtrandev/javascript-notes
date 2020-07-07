@@ -1,0 +1,126 @@
+.container {
+    display: inline-block;
+}
+
+.label {
+    text-align: center;
+}
+
+.clock-face {
+    background-repeat: no-repeat;
+    background-size: 45%;
+    background-position: center;
+}
+
+.clock {
+    background: url(/clock.svg) no-repeat center;
+    background-size: 88%;
+    border-radius: 50%;
+    border: 5px solid black;
+    display: inline-block;
+    margin: 1%;
+    position: relative;
+    width: 200px;
+    height: 200px;
+    opacity: 1;
+    transition: all 2.5s 0.5s cubic-bezier(0.12, 1.03, 0.34, 1);
+}
+
+.clock::after {
+    background: red;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    width: 2%;
+    height: 2%;
+}
+
+.clock:before {
+    background: black;
+    border-radius: 50%;
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    width: 6%;
+    height: 6%;
+    z-index: 0;
+}
+
+.minutes-container,
+.hours-container,
+.seconds-container {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.hours-container {
+    -webkit-animation: rotate 43200s infinite linear;
+    animation: rotate 43200s infinite linear;
+}
+
+.hours {
+    background: #000;
+    position: absolute;
+    border-radius: 85%/10%;
+    width: 2%;
+    height: 20%;
+    left: 49%;
+    top: 30%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+
+.minutes {
+    background: #000;
+    border-radius: 150%/10%;
+    position: absolute;
+    width: 2%;
+    height: 35%;
+    left: 49%;
+    top: 15%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+
+.seconds {
+    background: red;
+    position: absolute;
+    z-index: 8;
+    border-radius: 200%/10%;
+    height: 30%;
+    left: 49.5%;
+    top: 20%;
+    width: 1%;
+    -webkit-transform-origin: 50% 100%;
+    transform-origin: 50% 100%;
+}
+
+.error {
+    font-size: .5em;
+    color: red;
+}
+
+@-webkit-keyframes rotate {
+    100% {
+        -webkit-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes rotate {
+    100% {
+        -webkit-transform: rotateZ(360deg);
+        transform: rotateZ(360deg);
+    }
+}
